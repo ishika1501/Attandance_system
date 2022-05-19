@@ -1,1 +1,0 @@
-SELECT * FROM database1.student;
