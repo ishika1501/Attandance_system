@@ -186,14 +186,14 @@ class Student:
         radiobtn2=ttk.Radiobutton(class_student_frame,variable=self.var_radio1,text="no photo sample",value="No")
         radiobtn2.grid(row=6,column=1)
 
-        #---------------------------------------------bbuttons frames-----------------------------------------------------
+        #---------------------------------------------buttons frames-----------------------------------------------------
         btn_frame=Frame(class_student_frame,bd=2,relief=RIDGE,bg="white")
         btn_frame.place(x=0,y=250,width=715,height=70)
 
         save_btn=Button(btn_frame,text="Save",command=self.add_data,width=17,font=("times new roman",13,"bold"),bg="blue",fg="white")
         save_btn.grid(row=0,column=0)
 
-        update_btn=Button(btn_frame,text="Update",width=17,font=("times new roman",13,"bold"),bg="blue",fg="white")
+        update_btn=Button(btn_frame,text="Update",command=self.update_data,width=17,font=("times new roman",13,"bold"),bg="blue",fg="white")
         update_btn.grid(row=0,column=1)
 
         delete_btn=Button(btn_frame,text="Delete",command=self.delete_data,width=17,font=("times new roman",13,"bold"),bg="blue",fg="white")
