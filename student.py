@@ -28,151 +28,147 @@ class Student:
         self.var_address=StringVar()
         self.var_teacher=StringVar()
 
-         #------------------background image-----------------
-        img3=Image.open(r"C:\Users\my pc\Desktop\current_project\images\background.jpg")
-        img3=img3.resize((500,130),Image.ANTIALIAS)
+         #--------------------background image---------------------
+        img3=Image.open(r"C:\Users\my pc\Desktop\current_project\images\abc.jpeg")
+        img3=img3.resize((1530,1170),Image.ANTIALIAS)
         self.photoimg3=ImageTk.PhotoImage(img3)
 
         bg_img=Label(self.root,image=self.photoimg3)
-        bg_img.place(x=0,y=0,width=1530,height=1800)
+        bg_img.place(x=0,y=0,width=1530,height=1170)
 
 
-        #-------------background label-----------------
-        title_lbl=Label(bg_img,text="STUDENT MANAGEMENT SYSTEM", font=("times new roman",35,"bold"),bg="white",fg="red")
-        title_lbl.place(x=0,y=0,width=1530,height=45)
+        #---------------------background label---------------------
+        title_lbl=Label(bg_img,text="STUDENT   MANAGEMENT   SYSTEM", font=("Arial",25,"bold"),bg="white",fg="grey")
+        title_lbl.place(x=0,y=0,width=1530,height=35)
 
+        #------------------Main label frame---------------------
         main_frame=Frame(bg_img,bd=2,bg="white")
-        main_frame.place(x=10,y=55,width=1500,height=600)
+        main_frame.place(x=10,y=55,width=1500,height=700)
 
-        #------------------left side label frame-------------
+        #---------------------left side label frame---------------------
 
-        Left_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text="Student details",font=("times new roman",15,"bold"))
-        Left_frame.place(x=20,y=0,width=760,height=750)
+        Left_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text="Student details",font=("Arial",13,"bold"))
+        Left_frame.place(x=20,y=0,width=760,height=700)
 
-        img_left=Image.open(r"C:\Users\my pc\Desktop\current_project\images\rectangle.jpg")
-        img_left=img_left.resize((500,130),Image.ANTIALIAS)
+        img_left=Image.open(r"C:\Users\my pc\Desktop\current_project\images\abc.jpeg")
+        img_left=img_left.resize((750,700),Image.ANTIALIAS)
         self.photoimg_left=ImageTk.PhotoImage(img_left)
 
         f_lbl=Label(Left_frame,image=self.photoimg_left)
-        f_lbl.place(x=39,y=80,width=750,height=120)
+        f_lbl.place(x=3,y=0,width=750,height=620)
 
-        #-----------------------current course details--------------------
-        current_course_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text="Current course",font=("times new roman",15,"bold"))
-        current_course_frame.place(x=20,y=135,width=760,height=130)
+        #-----------------------current course details----------------------
+        current_course_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text="Current course",font=("Arial",15,"bold"))
+        current_course_frame.place(x=25,y=135,width=750,height=130)
 
         #department:
-
-        dep_label=Label(current_course_frame,text="Department",font=("times new roman",13,"bold"),bg="white")
+        dep_label=Label(current_course_frame,text="Department",font=("Arial",13,"bold"),bg="white")
         dep_label.grid(row=0,column=0,padx=10)
 
-        dep_combo=ttk.Combobox(current_course_frame,textvariable=self.var_dep,font=("times new roman",10,"bold"),width=13,state="read only")
-        dep_combo["values"]=("select Department","computer","mechanical","EIE","civil")
+        dep_combo=ttk.Combobox(current_course_frame,textvariable=self.var_dep,font=("Arial",10,"bold"),width=25,state="read only")
+        dep_combo["values"]=("select Department","CSE","ME","EIE","CE","ECE",)
         dep_combo.current(0)
         dep_combo.grid(row=0,column=1,padx=2,pady=10,sticky=W)
 
         #course:
-        course_label=Label(current_course_frame,text="Course",font=("times new roman",13,"bold"),bg="white")
+        course_label=Label(current_course_frame,text="Course",font=("Arial",13,"bold"),bg="white")
         course_label.grid(row=0,column=2,padx=10,sticky=W)
 
-        course_combo=ttk.Combobox(current_course_frame,textvariable=self.var_course,font=("times new roman",10,"bold"),width=13,state="read only")
+        course_combo=ttk.Combobox(current_course_frame,textvariable=self.var_course,font=("Arial",10,"bold"),width=25,state="read only")
         course_combo["values"]=("select Course","computer","mechanical","EIE","civil")
         course_combo.current(0)
         course_combo.grid(row=0,column=3,padx=2,pady=10)
 
 
         #year:
-
-        year_label=Label(current_course_frame,text="Year",font=("times new roman",13,"bold"),bg="white")
+        year_label=Label(current_course_frame,text="Year",font=("Arial",13,"bold"),bg="white")
         year_label.grid(row=1,column=0,padx=10,sticky=W)
 
-        year_combo=ttk.Combobox(current_course_frame,textvariable=self.var_year,font=("times new roman",10,"bold"),width=17,state="read only")
+        year_combo=ttk.Combobox(current_course_frame,textvariable=self.var_year,font=("Arial",10,"bold"),width=25,state="read only")
         year_combo["values"]=("select Year","1","2","3","4")
         year_combo.current(0)
         year_combo.grid(row=1,column=1,padx=2,pady=10,sticky=W)
 
         #semester:
-        semester_label=Label(current_course_frame,text="Semester",font=("times new roman",13,"bold"),bg="white")
+        semester_label=Label(current_course_frame,text="Semester",font=("Arial",13,"bold"),bg="white")
         semester_label.grid(row=1,column=2,padx=2,pady=10,sticky=W)
 
-        semester_combo=ttk.Combobox(current_course_frame,textvariable=self.var_semester,font=("times new roman",10,"bold"),width=17,state="read only")
+        semester_combo=ttk.Combobox(current_course_frame,textvariable=self.var_semester,font=("Arial",10,"bold"),width=25,state="read only")
         semester_combo["values"]=("select Semester","1","2")
         semester_combo.current(0)
         semester_combo.grid(row=1,column=3,padx=2,pady=10,sticky=W)
 
-        #-----------------------Class student  details--------------------
-        class_student_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text="Class student information",font=("times new roman",15,"bold"))
-        class_student_frame.place(x=20,y=260,width=760,height=430)
+        #-----------------------Class student details--------------------
+        class_student_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text="Class student information",font=("Arial",15,"bold"))
+        class_student_frame.place(x=25,y=250,width=750,height=430)
 
         #studentID:
-        studentID_label=Label(class_student_frame,text="Student ID:",font=("times new roman",13,"bold"),bg="white")
+        studentID_label=Label(class_student_frame,text="Student ID:",font=("Arial",13,"bold"),bg="white")
         studentID_label.grid(row=0,column=0,padx=2,pady=10,sticky=W)
 
         studentID_entry=ttk.Entry(class_student_frame,textvariable=self.var_std_id,width=20)
         studentID_entry.grid(row=0,column=1,padx=10,sticky=W)
 
         #studentname:
-        studentName_label=Label(class_student_frame,text="Student NAme:",font=("times new roman",13,"bold"),bg="white")
+        studentName_label=Label(class_student_frame,text="Student Name:",font=("Arial",13,"bold"),bg="white")
         studentName_label.grid(row=0,column=2,padx=2,pady=10,sticky=W)
 
         studentName_label=ttk.Entry(class_student_frame,textvariable=self.var_std_name,width=20)
         studentName_label.grid(row=0,column=3,padx=10,sticky=W)
 
         #studentDivision
-        studentName_label=Label(class_student_frame,text="Student Division:",font=("times new roman",13,"bold"),bg="white")
-        studentName_label.grid(row=1,column=0,padx=2,pady=10,sticky=W)
+        studentDiv_label=Label(class_student_frame,text="Student Division:",font=("Arial",13,"bold"),bg="white")
+        studentDiv_label.grid(row=1,column=0,padx=2,pady=10,sticky=W)
 
-        studentName_label=ttk.Entry(class_student_frame,textvariable=self.var_div,width=20)
-        studentName_label.grid(row=1,column=1,padx=10,sticky=W)
+        studentDiv_label=ttk.Entry(class_student_frame,textvariable=self.var_div,width=20)
+        studentDiv_label.grid(row=1,column=1,padx=10,sticky=W)
 
         #roll no:
-        rollno_entry=Label(class_student_frame,text="Roll no:",font=("times new roman",13,"bold"),bg="white")
+        rollno_entry=Label(class_student_frame,text="Roll no:",font=("Arial",13,"bold"),bg="white")
         rollno_entry.grid(row=1,column=2,padx=2,pady=10,sticky=W)
 
         rollno_entry=ttk.Entry(class_student_frame,textvariable=self.var_roll,width=20)
         rollno_entry.grid(row=1,column=3,padx=10,sticky=W)
 
         #gender:
-        gender_entry=Label(class_student_frame,text="Gender:",font=("times new roman",13,"bold"),bg="white")
+        gender_entry=Label(class_student_frame,text="Gender:",font=("Arial",13,"bold"),bg="white")
         gender_entry.grid(row=2,column=0,padx=2,pady=10,sticky=W)
 
-        #gender_entry=ttk.Entry(class_student_frame,textvariable=self.var_gender,width=20)
-        #gender_entry.grid(row=2,column=1,padx=10,sticky=W)
-
-        gender_combo=ttk.Combobox(class_student_frame,textvariable=self.var_gender,font=("times new roman",10,"bold"),width=17,state="read only")
+        gender_combo=ttk.Combobox(class_student_frame,textvariable=self.var_gender,font=("Arial",10,"bold"),width=17,state="read only")
         gender_combo["values"]=("Male","Female","other")
         gender_combo.current(0)
         gender_combo.grid(row=2,column=1,padx=2,pady=10,sticky=W)
 
         #DOB:
-        DOB_entry=Label(class_student_frame,text="dd-mm-yyyy:",font=("times new roman",13,"bold"),bg="white")
+        DOB_entry=Label(class_student_frame,text="dd-mm-yyyy:",font=("Arial",13,"bold"),bg="white")
         DOB_entry.grid(row=2,column=2,padx=2,pady=10,sticky=W)
 
         DOB_entry=ttk.Entry(class_student_frame,textvariable=self.var_dob,width=20)
         DOB_entry.grid(row=2,column=3,padx=10,sticky=W)
 
         #email:
-        studentemail_label=Label(class_student_frame,text="EMAIL:",font=("times new roman",13,"bold"),bg="white")
+        studentemail_label=Label(class_student_frame,text="EMAIL:",font=("Arial",13,"bold"),bg="white")
         studentemail_label.grid(row=3,column=0,padx=2,pady=10,sticky=W)
 
         studentemail_label=ttk.Entry(class_student_frame,textvariable=self.var_email,width=20)
         studentemail_label.grid(row=3,column=1,padx=10,sticky=W)
 
         #phonenumber:
-        studentph_label=Label(class_student_frame,text="Phone no:",font=("times new roman",13,"bold"),bg="white")
+        studentph_label=Label(class_student_frame,text="Phone no:",font=("Arial",13,"bold"),bg="white")
         studentph_label.grid(row=3,column=2,padx=2,pady=10,sticky=W)
 
         studentph_label=ttk.Entry(class_student_frame,textvariable=self.var_phone,width=20)
         studentph_label.grid(row=3,column=3,padx=10,sticky=W)
 
         #address:
-        studentaddress_label=Label(class_student_frame,text="Address:",font=("times new roman",13,"bold"),bg="white")
+        studentaddress_label=Label(class_student_frame,text="Address:",font=("Arial",13,"bold"),bg="white")
         studentaddress_label.grid(row=4,column=0,padx=2,pady=10,sticky=W)
 
         studentaddress_label=ttk.Entry(class_student_frame,textvariable=self.var_address,width=20)
         studentaddress_label.grid(row=4,column=1,padx=10,sticky=W)
 
         #teacher name :
-        Teachername_label=Label(class_student_frame,text="Teachers name",font=("times new roman",13,"bold"),bg="white")
+        Teachername_label=Label(class_student_frame,text="Teachers name",font=("Arial",13,"bold"),bg="white")
         Teachername_label.grid(row=4,column=2,padx=2,pady=10,sticky=W)
 
         Teachername_label=ttk.Entry(class_student_frame,textvariable=self.var_teacher,width=20)
@@ -180,32 +176,32 @@ class Student:
 
         #-------------------------------------radio Button-----------------------------------------------------
         self.var_radio1=StringVar()
-        radiobtn1=ttk.Radiobutton(class_student_frame,variable=self.var_radio1,text="take photo sample",value="Yes")
+        radiobtn1=ttk.Radiobutton(class_student_frame,variable=self.var_radio1,text="Take photo sample",value="Yes")
         radiobtn1.grid(row=6,column=0)
 
-        radiobtn2=ttk.Radiobutton(class_student_frame,variable=self.var_radio1,text="no photo sample",value="No")
+        radiobtn2=ttk.Radiobutton(class_student_frame,variable=self.var_radio1,text="No photo sample",value="No")
         radiobtn2.grid(row=6,column=1)
 
         #---------------------------------------------buttons frames-----------------------------------------------------
         btn_frame=Frame(class_student_frame,bd=2,relief=RIDGE,bg="white")
-        btn_frame.place(x=0,y=250,width=715,height=70)
+        btn_frame.place(x=0,y=330,width=745,height=70)
 
-        save_btn=Button(btn_frame,text="Save",command=self.add_data,width=17,font=("times new roman",13,"bold"),bg="blue",fg="white")
+        save_btn=Button(btn_frame,text="Save",command=self.add_data,width=18,font=("Arial",13,"bold"),bg="blue",fg="white")
         save_btn.grid(row=0,column=0)
 
-        update_btn=Button(btn_frame,text="Update",command=self.update_data,width=17,font=("times new roman",13,"bold"),bg="blue",fg="white")
+        update_btn=Button(btn_frame,text="Update",command=self.update_data,width=18,font=("Arial",13,"bold"),bg="blue",fg="white")
         update_btn.grid(row=0,column=1)
 
-        delete_btn=Button(btn_frame,text="Delete",command=self.delete_data,width=17,font=("times new roman",13,"bold"),bg="blue",fg="white")
+        delete_btn=Button(btn_frame,text="Delete",command=self.delete_data,width=18,font=("Arial",13,"bold"),bg="blue",fg="white")
         delete_btn.grid(row=0,column=2)
 
-        reset_btn=Button(btn_frame,text="Reset",command=self.reset_data,width=17,font=("times new roman",13,"bold"),bg="blue",fg="white")
+        reset_btn=Button(btn_frame,text="Reset",command=self.reset_data,width=18,font=("Arial",13,"bold"),bg="blue",fg="white")
         reset_btn.grid(row=0,column=3)
 
-        take_photo_btn=Button(btn_frame,command=self.generate_dataset,text="Take a photo",width=17,font=("times new roman",13,"bold"),bg="blue",fg="white")
+        take_photo_btn=Button(btn_frame,command=self.generate_dataset,text="Take a photo",width=18,font=("Arial",13,"bold"),bg="blue",fg="white")
         take_photo_btn.grid(row=1,column=0)
 
-        resetphoto_btn=Button(btn_frame,text="Reset photo",width=17,font=("times new roman",13,"bold"),bg="blue",fg="white")
+        resetphoto_btn=Button(btn_frame,text="Reset photo",width=18,font=("Arial",13,"bold"),bg="blue",fg="white")
         resetphoto_btn.grid(row=1,column=1)
 
 
@@ -213,25 +209,25 @@ class Student:
 
         #---------------------------------------Right side label frame---------------------------------------------------------
 
-        Right_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text="Student details",font=("times new roman",15,"bold"))
+        Right_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text="Student details",font=("Arial",13,"bold"))
         Right_frame.place(x=810,y=0,width=660,height=650)
 
-        img_right=Image.open(r"C:\Users\my pc\Desktop\current_project\images\rectangle.jpg")
-        img_right=img_right.resize((500,130),Image.ANTIALIAS)
+        img_right=Image.open(r"C:\Users\my pc\Desktop\current_project\images\abc.jpeg")
+        img_right=img_right.resize((750,700),Image.ANTIALIAS)
         self.photoimg_right=ImageTk.PhotoImage(img_right)
 
         f_lbl=Label(Right_frame,image=self.photoimg_right)
-        f_lbl.place(x=10,y=0,width=750,height=120)
+        f_lbl.place(x=0,y=0,width=730,height=100)
 
         #-------------------------------------------------Search system--------------------------------------------------------
-        search_frame=LabelFrame(Right_frame,bd=2,bg="white",relief=RIDGE,text="Search system",font=("times new roman",15,"bold"))
+        search_frame=LabelFrame(Right_frame,bd=2,bg="white",relief=RIDGE,text="Search system",font=("Arial",15,"bold"))
         search_frame.place(x=10,y=120,width=630,height=70)
 
-        search_label=Label(search_frame,text="search:",font=("times new roman",13,"bold"),bg="white")
+        search_label=Label(search_frame,text="Search:",font=("Arial",13,"bold"),bg="white")
         search_label.grid(row=-0,column=0,padx=2,pady=10,sticky=W)
 
-        search_combo=ttk.Combobox(search_frame,font=("times new roman",10,"bold"),width=17,state="read only")
-        search_combo["values"]=("select","Roll no","phone no")
+        search_combo=ttk.Combobox(search_frame,font=("Arial",10,"bold"),width=17,state="read only")
+        search_combo["values"]=("Select","Roll_No","Phone_no")
         search_combo.current(0)
         search_combo.grid(row=0,column=1,padx=2,pady=10,sticky=W)
 
@@ -239,20 +235,20 @@ class Student:
         search_entry=ttk.Entry(search_frame,width=20)
         search_entry.grid(row=0,column=2,padx=10,sticky=W)
 
-        search_btn=Button(search_frame,text="Search",width=12,font=("times new roman",13,"bold"),bg="blue",fg="white")
-        search_btn.grid(row=0,column=3,padx=2)
+        search_btn=Button(search_frame,text="Search",width=12,font=("Arial",10,"bold"),bg="blue",fg="white")
+        search_btn.grid(row=0,column=3,padx=1)
 
-        showall_btn=Button(search_frame,text="Show all",width=12,font=("times new roman",13,"bold"),bg="blue",fg="white")
-        showall_btn.grid(row=0,column=4,padx=2)
+        showall_btn=Button(search_frame,text="Show All",width=12,font=("Arial",10,"bold"),bg="blue",fg="white")
+        showall_btn.grid(row=0,column=4,padx=1)
 
-        #---------------------------table frame----------------------
+        #---------------------------table frame--------------------------
         table_frame=Frame(Right_frame,bd=2,bg="white",relief=RIDGE)
         table_frame.place(x=10,y=210,width=630,height=270)
 
         scroll_x=ttk.Scrollbar(table_frame,orient=HORIZONTAL)
         scroll_y=ttk.Scrollbar(table_frame,orient=VERTICAL)
 
-        self.student_table=ttk.Treeview(table_frame,column=("dep","course","year","sem","id","name","div","roll","gender","dob","email","gender","phone","address","teacher","photo"),xscrollcommand=scroll_x.set,yscrollcommand=scroll_y.set)
+        self.student_table=ttk.Treeview(table_frame,column=("dep","course","year","sem","id","name","div","roll","dob","email","gender","phone","address","teacher","photo"),xscrollcommand=scroll_x.set,yscrollcommand=scroll_y.set)
 
         scroll_x.pack(side=BOTTOM,fill=X)
         scroll_y.pack(side=RIGHT,fill=Y)
@@ -266,8 +262,10 @@ class Student:
         self.student_table.heading("id",text="StudentId")
         self.student_table.heading("name",text="Name")
         self.student_table.heading("div",text="Division")
+        self.student_table.heading("roll",text="Roll")
         self.student_table.heading("dob",text="DOB")
-        self.student_table.heading("email",text="email")
+        self.student_table.heading("email",text="Email")
+        self.student_table.heading("gender",text="Gender")
         self.student_table.heading("phone",text="Phone")
         self.student_table.heading("address",text="Address")
         self.student_table.heading("teacher",text="Teacher")
@@ -281,8 +279,10 @@ class Student:
         self.student_table.column("id",width=100)
         self.student_table.column("name",width=100)
         self.student_table.column("div",width=100)
+        self.student_table.column("roll",width=100)
         self.student_table.column("dob",width=100)
         self.student_table.column("email",width=100)
+        self.student_table.column("gender",width=100)
         self.student_table.column("phone",width=100)
         self.student_table.column("address",width=100)
         self.student_table.column("teacher",width=100)
