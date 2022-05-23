@@ -24,7 +24,7 @@ class Attandance:
                 self.root.geometry("1530x790+0+0")
                 self.root.title("face recognisation system")
 
-                #variables:
+                #----------------------variables---------------------
                 self.var_atten_id=StringVar()
                 self.var_atten_roll=StringVar()
                 self.var_atten_name=StringVar()
@@ -34,7 +34,7 @@ class Attandance:
                 self.var_atten_attendance=StringVar()
 
 
-                #first image
+                #----------------------first image---------------------
                 img=Image.open(r"images\abc.jpeg")
                 img=img.resize((1500,800),Image.ANTIALIAS)
                 self.photoimg=ImageTk.PhotoImage(img)
@@ -42,7 +42,7 @@ class Attandance:
                 f_lbl=Label(self.root,image=self.photoimg)
                 f_lbl.place(x=0,y=0,width=1500,height=100)
 
-                #second image :
+                #---------------------second image---------------------
                 img=Image.open(r"images\abc.jpeg")
                 img=img.resize((1500,1500),Image.ANTIALIAS)
                 self.photoimg=ImageTk.PhotoImage(img)
@@ -50,7 +50,7 @@ class Attandance:
                 f_lbl=Label(self.root,image=self.photoimg)
                 f_lbl.place(x=800,y=0,width=1500,height=200)
 
-                #background image:
+                #--------------------background image----------------------
                 img3=Image.open(r"images\abc.jpeg")
                 img3=img3.resize((1500,1300),Image.ANTIALIAS)
                 self.photoimg3=ImageTk.PhotoImage(img3)
@@ -81,7 +81,7 @@ class Attandance:
                 #-----------------------------labels and entry---------------------------------------:
 
                 #attendance id:
-                attendanceId_label=Label(left_inside_frame,text="Attendance ID: ",font=("Arial",13,"bold"),bg="white")
+                attendanceId_label=Label(left_inside_frame,textvariable=self.var_atten_id,text="Attendance ID: ",font=("Arial",13,"bold"),bg="white")
                 attendanceId_label.grid(row=0,column=0,padx=2,pady=10,sticky=W)
 
                 attendanceId_entry=ttk.Entry(left_inside_frame,width=20)
@@ -89,7 +89,7 @@ class Attandance:
 
 
                 #roll
-                rollLabel_label=Label(left_inside_frame,textvariable=self.var_atten_id,text="Roll: ",font=("Arial",13,"bold"),bg="white")
+                rollLabel_label=Label(left_inside_frame,textvariable=self.var_atten_roll,text="Roll: ",font=("Arial",13,"bold"),bg="white")
                 rollLabel_label.grid(row=0,column=2,padx=2,pady=10,sticky=W)
 
                 atten_roll=ttk.Entry(left_inside_frame,width=20)
@@ -146,7 +146,7 @@ class Attandance:
                 delete_btn=Button(btn_frame,text="Update",width=17,font=("Arial",13,"bold"),bg="blue",fg="white")
                 delete_btn.grid(row=0,column=2)
 
-                reset_btn=Button(btn_frame,text="Reset",width=17,font=("Arial",13,"bold"),bg="blue",fg="white")
+                reset_btn=Button(btn_frame,text="Reset",command=self.reset_data,width=17,font=("Arial",13,"bold"),bg="blue",fg="white")
                 reset_btn.grid(row=0,column=3)
 
 
@@ -193,6 +193,8 @@ class Attandance:
         
 
                 self.AttandanceReportTable.pack(fill=BOTH,expand=1)
+                self.AttandanceReportTable.bind("<ButtonRelease>",self.get_cursor)
+
 
 
         #---------------------fetch data---------------------
@@ -225,8 +227,30 @@ class Attandance:
                     messagebox.showinfo("Data Export","Your data exported to "+os.path.basename(fln)+"succesfully")  
             except Exception as es:
                     messagebox.showerror("Error",f"Due to:{str(es)}",parent=self.root)             
+        #----------------------get coursor---------------------
+        def get_cursor(self,event=""):
+            cursor_row=self.AttandanceReportTable.focus()
+            content=self.AttandanceReportTable.item(cursor_row)
+            rows=content['values']
+            self.var_atten_id.set(rows[0])
+            self.var_atten_roll.set(rows[1])
+            self.var_atten_name.set(rows[2])
+            self.var_atten_dep.set(rows[3])
+            self.var_atten_time.set(rows[4])
+            self.var_atten_date.set(rows[5])
+            self.var_atten_attendance.set(rows[6])
 
-        #def get_cursor(self):
+        def reset_data(self):
+            self.var_atten_id.set("")
+            self.var_atten_roll.set("")
+            self.var_atten_name.set("")
+            self.var_atten_dep.set("")
+            self.var_atten_time.set("")
+            self.var_atten_date.set("")
+            self.var_atten_attendance.set("")
+
+
+
             
 
 
