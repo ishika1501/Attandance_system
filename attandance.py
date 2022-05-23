@@ -6,6 +6,8 @@ from tkinter import ttk
 from turtle import update
 from PIL import Image,ImageTk
 from tkinter import messagebox
+
+from colorama import Cursor
 import mysql.connector
 import cv2
 import os
@@ -21,6 +23,16 @@ class Attandance:
                 self.root=root
                 self.root.geometry("1530x790+0+0")
                 self.root.title("face recognisation system")
+
+                #variables:
+                self.var_atten_id=StringVar()
+                self.var_atten_roll=StringVar()
+                self.var_atten_name=StringVar()
+                self.var_atten_dep=StringVar()
+                self.var_atten_time=StringVar()
+                self.var_atten_date=StringVar()
+                self.var_atten_attendance=StringVar()
+
 
                 #first image
                 img=Image.open(r"images\abc.jpeg")
@@ -77,42 +89,42 @@ class Attandance:
 
 
                 #roll
-                rollLabel_label=Label(left_inside_frame,text="Roll: ",font=("Arial",13,"bold"),bg="white")
+                rollLabel_label=Label(left_inside_frame,textvariable=self.var_atten_id,text="Roll: ",font=("Arial",13,"bold"),bg="white")
                 rollLabel_label.grid(row=0,column=2,padx=2,pady=10,sticky=W)
 
                 atten_roll=ttk.Entry(left_inside_frame,width=20)
                 atten_roll.grid(row=0,column=3,padx=8)
 
                 #name:
-                rollLabel_label=Label(left_inside_frame,text="Name: ",font=("Arial",13,"bold"),bg="white")
+                rollLabel_label=Label(left_inside_frame,textvariable=self.var_atten_name,text="Name: ",font=("Arial",13,"bold"),bg="white")
                 rollLabel_label.grid(row=1,column=0,padx=2,pady=10,sticky=W)
 
                 atten_roll=ttk.Entry(left_inside_frame,width=20)
                 atten_roll.grid(row=1,column=1,padx=8)
 
                 #departemnt:
-                depLabel_label=Label(left_inside_frame,text="Department: ",font=("Arial",13,"bold"),bg="white")
+                depLabel_label=Label(left_inside_frame,textvariable=self.var_atten_dep,text="Department: ",font=("Arial",13,"bold"),bg="white")
                 depLabel_label.grid(row=1,column=2,padx=2,pady=10,sticky=W)
 
                 atten_dep=ttk.Entry(left_inside_frame,width=20)
                 atten_dep.grid(row=1,column=3,padx=8)
 
                 #time:
-                timeLabel_label=Label(left_inside_frame,text="Time: ",font=("Arial",13,"bold"),bg="white")
+                timeLabel_label=Label(left_inside_frame,textvariable=self.var_atten_time,text="Time: ",font=("Arial",13,"bold"),bg="white")
                 timeLabel_label.grid(row=2,column=0,padx=2,pady=10,sticky=W)
 
                 atten_time=ttk.Entry(left_inside_frame,width=20)
                 atten_time.grid(row=2,column=1,padx=8)
 
                 #date:
-                dateLabel_label=Label(left_inside_frame,text="Date: ",font=("Arial",13,"bold"),bg="white")
+                dateLabel_label=Label(left_inside_frame,textvariable=self.var_atten_date,text="Date: ",font=("Arial",13,"bold"),bg="white")
                 dateLabel_label.grid(row=2,column=2,padx=2,pady=10,sticky=W)
 
                 atten_date=ttk.Entry(left_inside_frame,width=20)
                 atten_date.grid(row=2,column=3,padx=8)
 
                 #attendance:
-                atten_status=Label(left_inside_frame,text="Attendance: ",font=("Arial",13,"bold"),bg="white")
+                atten_status=Label(left_inside_frame,textvariable=self.var_atten_attendance,text="Attendance: ",font=("Arial",13,"bold"),bg="white")
                 atten_status.grid(row=3,column=0,padx=2,pady=10,sticky=W)
 
                 self.atten_status=ttk.Combobox(left_inside_frame,font=("Arial",10,"bold"),width=17,state="read only")
@@ -210,11 +222,12 @@ class Attandance:
                     exp_write=csv.writer(myfiles,delimiter=",")
                     for i in mydata:
                             exp_write.writerow(i)
-                            messagebox.showinfo("Data Export","Your data exported to "+os.path.basename(fln)+"succesfully")  
+                    messagebox.showinfo("Data Export","Your data exported to "+os.path.basename(fln)+"succesfully")  
             except Exception as es:
                     messagebox.showerror("Error",f"Due to:{str(es)}",parent=self.root)             
 
-
+        #def get_cursor(self):
+            
 
 
 
