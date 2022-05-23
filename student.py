@@ -41,8 +41,8 @@ class Student:
 
 
         #---------------------background label---------------------
-        title_lbl=Label(bg_img,text="STUDENT   MANAGEMENT   SYSTEM", font=("Arial",25,"bold"),bg="white",fg="grey")
-        title_lbl.place(x=0,y=0,width=1530,height=35)
+        title_lbl=Label(bg_img,text="STUDENT MANAGEMENT SYSTEM", font=("Arial",25,"bold"),bg="#afd9e4",fg="white")
+        title_lbl.place(x=0,y=0,width=1530,height=50)
 
         #------------------Main label frame---------------------
         main_frame=Frame(bg_img,bd=2,bg="white")
@@ -78,7 +78,7 @@ class Student:
         course_label.grid(row=0,column=2,padx=10,sticky=W)
 
         course_combo=ttk.Combobox(current_course_frame,textvariable=self.var_course,font=("Arial",10,"bold"),width=25,state="read only")
-        course_combo["values"]=("Select Course","computer","mechanical","EIE","civil")
+        course_combo["values"]=("Select Course","B.TECH","MS","PHD")
         course_combo.current(0)
         course_combo.grid(row=0,column=3,padx=2,pady=10)
 
@@ -122,9 +122,6 @@ class Student:
         #studentDivision
         studentDiv_label=Label(class_student_frame,text="Student Division:",font=("Arial",13,"bold"),bg="white")
         studentDiv_label.grid(row=1,column=0,padx=2,pady=10,sticky=W)
-
-       # studentDiv_label=ttk.Entry(class_student_frame,textvariable=self.var_div,width=20)
-        #studentDiv_label.grid(row=1,column=1,padx=10,sticky=W)
 
         div_combo=ttk.Combobox(class_student_frame,textvariable=self.var_div,font=("Arial",10,"bold"),width=17,state="read only")
         div_combo["values"]=("Select Division","A","B","C")
@@ -194,22 +191,22 @@ class Student:
         btn_frame=Frame(class_student_frame,bd=2,relief=RIDGE,bg="white")
         btn_frame.place(x=0,y=330,width=745,height=70)
 
-        save_btn=Button(btn_frame,text="Save",command=self.add_data,width=18,font=("Arial",13,"bold"),bg="blue",fg="white")
+        save_btn=Button(btn_frame,text="SAVE",command=self.add_data,width=18,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
         save_btn.grid(row=0,column=0)
 
-        update_btn=Button(btn_frame,text="Update",command=self.update_data,width=18,font=("Arial",13,"bold"),bg="blue",fg="white")
+        update_btn=Button(btn_frame,text="UPDATE",command=self.update_data,width=18,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
         update_btn.grid(row=0,column=1)
 
-        delete_btn=Button(btn_frame,text="Delete",command=self.delete_data,width=18,font=("Arial",13,"bold"),bg="blue",fg="white")
+        delete_btn=Button(btn_frame,text="DELETE",command=self.delete_data,width=18,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
         delete_btn.grid(row=0,column=2)
 
-        reset_btn=Button(btn_frame,text="Reset",command=self.reset_data,width=18,font=("Arial",13,"bold"),bg="blue",fg="white")
+        reset_btn=Button(btn_frame,text="RESET",command=self.reset_data,width=18,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
         reset_btn.grid(row=0,column=3)
 
-        take_photo_btn=Button(btn_frame,command=self.generate_dataset,text="Take a photo",width=18,font=("Arial",13,"bold"),bg="blue",fg="white")
+        take_photo_btn=Button(btn_frame,text="TAKE PHOTO",command=self.generate_dataset,width=18,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
         take_photo_btn.grid(row=1,column=0)
 
-        resetphoto_btn=Button(btn_frame,text="Reset photo",width=18,font=("Arial",13,"bold"),bg="blue",fg="white")
+        resetphoto_btn=Button(btn_frame,text="RESET PHOTO",width=18,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
         resetphoto_btn.grid(row=1,column=1)
 
 
@@ -228,26 +225,26 @@ class Student:
         f_lbl.place(x=0,y=0,width=730,height=100)
 
         #-------------------------------------------------Search system--------------------------------------------------------
-        search_frame=LabelFrame(Right_frame,bd=2,bg="white",relief=RIDGE,text="Search system",font=("Arial",15,"bold"))
-        search_frame.place(x=10,y=120,width=630,height=70)
+        #search_frame=LabelFrame(Right_frame,bd=2,bg="white",relief=RIDGE,text="Search system",font=("Arial",15,"bold"))
+        #search_frame.place(x=10,y=120,width=630,height=70)
 
-        search_label=Label(search_frame,text="Search:",font=("Arial",13,"bold"),bg="white")
-        search_label.grid(row=-0,column=0,padx=2,pady=10,sticky=W)
+        #search_label=Label(search_frame,text="Search:",font=("Arial",13,"bold"),bg="white")
+        #search_label.grid(row=-0,column=0,padx=2,pady=10,sticky=W)
 
-        search_combo=ttk.Combobox(search_frame,font=("Arial",10,"bold"),width=17,state="read only")
-        search_combo["values"]=("Select","Roll_No","Phone_no")
-        search_combo.current(0)
-        search_combo.grid(row=0,column=1,padx=2,pady=10,sticky=W)
+        #search_combo=ttk.Combobox(search_frame,font=("Arial",10,"bold"),width=17,state="read only")
+        #search_combo["values"]=("Select","Roll_No","Phone_no")
+        #search_combo.current(0)
+        #search_combo.grid(row=0,column=1,padx=2,pady=10,sticky=W)
 
 
-        search_entry=ttk.Entry(search_frame,width=20)
-        search_entry.grid(row=0,column=2,padx=10,sticky=W)
+        #search_entry=ttk.Entry(search_frame,width=20)
+        #search_entry.grid(row=0,column=2,padx=10,sticky=W)
 
-        search_btn=Button(search_frame,text="Search",width=12,font=("Arial",10,"bold"),bg="blue",fg="white")
-        search_btn.grid(row=0,column=3,padx=1)
+        #search_btn=Button(search_frame,text="Search",width=12,font=("Arial",10,"bold"),bg="#afd9e4",fg="white")
+        #search_btn.grid(row=0,column=3,padx=1)
 
-        showall_btn=Button(search_frame,text="Show All",width=12,font=("Arial",10,"bold"),bg="blue",fg="white")
-        showall_btn.grid(row=0,column=4,padx=1)
+        #showall_btn=Button(search_frame,text="Show All",width=12,font=("Arial",10,"bold"),bg="#afd9e4",fg="white")
+        #showall_btn.grid(row=0,column=4,padx=1)
 
         #---------------------------table frame--------------------------
         table_frame=Frame(Right_frame,bd=2,bg="white",relief=RIDGE)
