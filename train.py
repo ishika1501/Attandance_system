@@ -16,31 +16,31 @@ class Train:
         self.root.geometry("1530x790+0+0")
         self.root.title("face recognisation system")
 
-        title_lbl=Label(self.root,text="TRAIN DATA SET", font=("times new roman",35,"bold"),bg="white",fg="red")
-        title_lbl.place(x=0,y=0,width=1930,height=45)
+        title_lbl=Label(self.root,text="TRAIN DATA SET", font=("Arial",25,"bold"),bg="white",fg="grey")
+        title_lbl.place(x=0,y=0,width=1530,height=45)
 
-        img_top=Image.open(r"C:\Users\my pc\Desktop\current_project\images\rectangle.jpg")
-        img_top=img_top.resize((500,130),Image.ANTIALIAS)
+        img_top=Image.open(r"images\abc.jpeg")
+        img_top=img_top.resize((1600,900),Image.ANTIALIAS)
         self.photoimg_top=ImageTk.PhotoImage(img_top)
 
         f_lbl=Label(self.root,image=self.photoimg_top)
         f_lbl.place(x=0,y=55,width=1530,height=320)
 
-        #----button----
-        b1_1=Button(self.root,text="Train Data",command=self.train_classifier,cursor="hand2",font=("times new roman",15,"bold"),bg="white",fg="red")
-        b1_1.place(x=0,y=380,width=1530,height=40)
+        #---------------------button----------------------
+        b1_1=Button(self.root,text="TRAIN DATA",command=self.train_classifier,cursor="hand2",font=("Arial",15,"bold"),bg="blue",fg="white")
+        b1_1.place(x=0,y=360,width=1530,height=40)
 
 
-        img_bottom=Image.open(r"C:\Users\my pc\Desktop\current_project\images\rectangle.jpg")
-        img_bottom=img_bottom.resize((500,130),Image.ANTIALIAS)
+        img_bottom=Image.open(r"images\abc.jpeg")
+        img_bottom=img_bottom.resize((1600,900),Image.ANTIALIAS)
         self.photoimg_bottom=ImageTk.PhotoImage(img_bottom)
 
         f_lbl=Label(self.root,image=self.photoimg_bottom)
-        f_lbl.place(x=0,y=440,width=1530,height=320)
+        f_lbl.place(x=0,y=400,width=1530,height=380)
 
     def train_classifier(self):
         data_dir=("data")
-        path=[os.path.join(data_dir,file)for file in os.listdir(data_dir)]
+        path=[os.path.join(data_dir,file) for file in os.listdir(data_dir)]
 
         faces=[]
         ids=[]
@@ -56,7 +56,7 @@ class Train:
             cv2.waitkey(1)==13
         ids=np.array(ids)
 
-        #---------Train the classifier and save---------
+        #--------------------Train the classifier and save---------------------
         clf=cv2.face.LBPHFaceRecognizer_create()
         clf.train(faces,ids)
         clf.write("classifier.xml")

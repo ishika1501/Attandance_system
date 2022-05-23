@@ -4,6 +4,9 @@ from turtle import update
 from PIL import Image,ImageTk
 from tkinter import messagebox
 import mysql.connector
+import cv2
+
+
 
 
 class Student:
@@ -66,7 +69,7 @@ class Student:
         dep_label.grid(row=0,column=0,padx=10)
 
         dep_combo=ttk.Combobox(current_course_frame,textvariable=self.var_dep,font=("Arial",10,"bold"),width=25,state="read only")
-        dep_combo["values"]=("select Department","CSE","ME","EIE","CE","ECE",)
+        dep_combo["values"]=("Select Department","CSE","ME","EIE","CE","ECE",)
         dep_combo.current(0)
         dep_combo.grid(row=0,column=1,padx=2,pady=10,sticky=W)
 
@@ -75,7 +78,7 @@ class Student:
         course_label.grid(row=0,column=2,padx=10,sticky=W)
 
         course_combo=ttk.Combobox(current_course_frame,textvariable=self.var_course,font=("Arial",10,"bold"),width=25,state="read only")
-        course_combo["values"]=("select Course","computer","mechanical","EIE","civil")
+        course_combo["values"]=("Select Course","computer","mechanical","EIE","civil")
         course_combo.current(0)
         course_combo.grid(row=0,column=3,padx=2,pady=10)
 
@@ -85,7 +88,7 @@ class Student:
         year_label.grid(row=1,column=0,padx=10,sticky=W)
 
         year_combo=ttk.Combobox(current_course_frame,textvariable=self.var_year,font=("Arial",10,"bold"),width=25,state="read only")
-        year_combo["values"]=("select Year","1","2","3","4")
+        year_combo["values"]=("Select Year","1","2","3","4")
         year_combo.current(0)
         year_combo.grid(row=1,column=1,padx=2,pady=10,sticky=W)
 
@@ -94,7 +97,7 @@ class Student:
         semester_label.grid(row=1,column=2,padx=2,pady=10,sticky=W)
 
         semester_combo=ttk.Combobox(current_course_frame,textvariable=self.var_semester,font=("Arial",10,"bold"),width=25,state="read only")
-        semester_combo["values"]=("select Semester","1","2")
+        semester_combo["values"]=("Select Semester","1","2")
         semester_combo.current(0)
         semester_combo.grid(row=1,column=3,padx=2,pady=10,sticky=W)
 
@@ -120,8 +123,13 @@ class Student:
         studentDiv_label=Label(class_student_frame,text="Student Division:",font=("Arial",13,"bold"),bg="white")
         studentDiv_label.grid(row=1,column=0,padx=2,pady=10,sticky=W)
 
-        studentDiv_label=ttk.Entry(class_student_frame,textvariable=self.var_div,width=20)
-        studentDiv_label.grid(row=1,column=1,padx=10,sticky=W)
+       # studentDiv_label=ttk.Entry(class_student_frame,textvariable=self.var_div,width=20)
+        #studentDiv_label.grid(row=1,column=1,padx=10,sticky=W)
+
+        div_combo=ttk.Combobox(class_student_frame,textvariable=self.var_div,font=("Arial",10,"bold"),width=17,state="read only")
+        div_combo["values"]=("Select Division","A","B","C")
+        div_combo.current(0)
+        div_combo.grid(row=1,column=1,padx=2,pady=10,sticky=W)
 
         #roll no:
         rollno_entry=Label(class_student_frame,text="Roll no:",font=("Arial",13,"bold"),bg="white")
@@ -147,7 +155,7 @@ class Student:
         DOB_entry.grid(row=2,column=3,padx=10,sticky=W)
 
         #email:
-        studentemail_label=Label(class_student_frame,text="EMAIL:",font=("Arial",13,"bold"),bg="white")
+        studentemail_label=Label(class_student_frame,text="Email:",font=("Arial",13,"bold"),bg="white")
         studentemail_label.grid(row=3,column=0,padx=2,pady=10,sticky=W)
 
         studentemail_label=ttk.Entry(class_student_frame,textvariable=self.var_email,width=20)
@@ -255,7 +263,7 @@ class Student:
         scroll_x.config(command=self.student_table.xview)
         scroll_y.config(command=self.student_table.yview)
 
-        self.student_table.heading("dep",text="department")
+        self.student_table.heading("dep",text="Department")
         self.student_table.heading("course",text="Course")
         self.student_table.heading("year",text="Year")
         self.student_table.heading("sem",text="Semester")
@@ -294,9 +302,10 @@ class Student:
 
     #----------------------------Function Declartion ---------------------------------
 
+    #----------------------------Add data ---------------------------------
     def add_data(self):
-        if self.var_dep.get()=="Select Department" or self.var_std_name.get()=="" or self.va_std_id.get()=="":
-            messagebox.showerror("Error all fields are required",parent=self.root)
+        if self.var_dep.get()=="Select Department" or self.var_std_name.get()=="" or self.var_std_id.get()=="":
+            messagebox.showerror("Error","All fields are required",parent=self.root)
         else:
             try:
                 conn=mysql.connector.connect(host="localhost",username="root",password="ishikaraj@123",database="database1")
@@ -324,7 +333,7 @@ class Student:
                 conn.close()
                 messagebox.showinfo("Success","Student details has been added successfully",parent=self.root)                                                                                           
             except Exception as es:
-                messagebox.showerror("Error",f"Due To:{str(es)},parent=self.root")
+                messagebox.showerror("Error",f"Due To:{str(es)}",parent=self.root)
 
 
     #----------------------------------------fetch data--------------------------------
@@ -341,7 +350,7 @@ class Student:
             conn.commit()
         conn.close()  
 
-    #--------------------  get cursor---------------- 
+    #---------------------get cursor--------------------- 
     def get_cursor(self,event=""):
         cursor_focus=self.student_table.focus()
         content=self.student_table.item(cursor_focus)
@@ -366,15 +375,15 @@ class Student:
     #----------------------------DATA update------------------------    
 
     def update_data(self):
-        if self.var_dep.get()=="Select Department" or self.var_std_name.get()=="" or self.va_std_id.get()=="":
-           messagebox.showerror("Error all fields are required",parent=self.root)
+        if self.var_dep.get()=="Select Department" or self.var_std_name.get()=="" or self.var_std_id.get()=="":
+           messagebox.showerror("Error","All fields are required",parent=self.root)
         else:
             try:
                 Update=messagebox.askyesno("Update","Do you want to update details",parent=self.root)
                 if Update>0:
-                    conn=mysql.connector.connect(host="localhost",username="root",password="ishikaraj@123",database="face_recognition")
+                    conn=mysql.connector.connect(host="localhost",username="root",password="ishikaraj@123",database="database1")
                     my_cursor=conn.cursor()
-                    my_cursor.execute("update student set Dep=%s,Course=%s,Year=%s,Semester=%s,Division=%s,Roll=%s,gender=%s,Dob=%s,Email=%s,Phone=%s,Address=%s,Teacher=%s,PhotoSample=%s where Student_id=%s",(  
+                    my_cursor.execute("update student set Dep=%s,Course=%s,Year=%s,Semester=%s,Name=%s,Division=%s,Roll=%s,gender=%s,Dob=%s,Email=%s,Phone=%s,Address=%s,Teacher=%s,PhotoSample=%s where Student_id=%s",(  
                                                                                                                                                                                 self.var_dep.get(),
                                                                                                                                                                                 self.var_course.get(),
                                                                                                                                                                                 self.var_year.get(),
@@ -408,9 +417,9 @@ class Student:
             messagebox.showerror("Error","Student id must be required",parent=self.root)
         else:
             try:
-                delete=messagebox.askyesno("Student Delete page","Do you want to delete",parent=self.root)
+                delete=messagebox.askyesno("Student Delete page","Do you want to delete?",parent=self.root)
                 if delete>0:
-                    conn=mysql.connector.connect(host="localhost",username="root",password="ishikaraj@123",database="face_recognition")
+                    conn=mysql.connector.connect(host="localhost",username="root",password="ishikaraj@123",database="database1")
                     my_cursor=conn.cursor()
                     sql="delete from student where Student_id=%s"
                     val=(self.var_std_id.get(),)
@@ -427,15 +436,15 @@ class Student:
 
 
 
-   #----------------------------reset data ------------------------------
+   #----------------------RESET DATA---------------------
     def reset_data(self): 
        self.var_dep.set("Select Department")
-       self.var_course.set("Select course")
-       self.var_year.set("Select year")
-       self.var_semester.set("Select semester")
-       self.var_std_id("")
-       self.var_std_name("")
-       self.var_div.set("")
+       self.var_course.set("Select Course")
+       self.var_year.set("Select Year")
+       self.var_semester.set("Select Semester")
+       self.var_std_id.set("")
+       self.var_std_name.set("")
+       self.var_div.set("Select Division")
        self.var_roll.set("")
        self.var_gender.set("Male")
        self.var_dob.set("")
@@ -445,13 +454,13 @@ class Student:
        self.var_teacher.set("")
        self.var_radio1.set("")
 
-    #-----------------Generating dataset /take photo sample-----------
+    #---------------------Generating dataset /take photo sample----------------------
     def generate_dataset(self):
-        if self.var_dep.get()=="Select Department" or self.var_std_name.get()=="" or self.va_std_id.get()=="":
+        if self.var_dep.get()=="Select Department" or self.var_std_name.get()=="" or self.var_std_id.get()=="":
             messagebox.showerror("Error all fields are required",parent=self.root)
         else:
             try:
-                conn=mysql.connector.connect(host="localhost",username="root",password="ishikaraj@123",database="face_recognition")
+                conn=mysql.connector.connect(host="localhost",username="root",password="ishikaraj@123",database="database1")
                 my_cursor=conn.cursor()
                 my_cursor=conn.cursor()
                 my_cursor.execute("select * from student")
@@ -459,7 +468,7 @@ class Student:
                 id=0
                 for x in myresult:
                     id+=1
-                my_cursor.execute("update student set Dep=%s,Course=%s,Year=%s,Semester=%s,Division=%s,Roll=%s,gender=%s,Dob=%s,Email=%s,Phone=%s,Address=%s,Teacher=%s,PhotoSample=%s where Student_id=%s",(  
+                my_cursor.execute("update student set Dep=%s,Course=%s,Year=%s,Semester=%s,Name=%s,Division=%s,Roll=%s,Gender=%s,Dob=%s,Email=%s,Phone=%s,Address=%s,Teacher=%s,PhotoSample=%s where Student_id=%s",(  
                                                                                                                                                                                 self.var_dep.get(),
                                                                                                                                                                                 self.var_course.get(),
                                                                                                                                                                                 self.var_year.get(),
@@ -504,20 +513,15 @@ class Student:
                         file_name_path="data/user."+str(id)+"."+str(img_id)+".jpg"
                         cv2.imwrite(file_name_path,face)
                         cv2.putText(face,str(img_id),(50,50),cv2.FONT_HERSHEY_COMPLEX,2,(0,255,0),2)
-                        cv2.imshow("Crooped Face",face)
+                        cv2.imshow("Cropped Face",face)
 
                     if cv2.waitKey(1)==13 or int(img_id)==100:
                         break
                 cap.release()
                 cv2.destroyAllWindows()
-
-                messagebox.showinfo("Result","Generating data sets completely")
+                messagebox.showinfo("Result","Generating data sets completed")
             except Exception as es:
                 messagebox.showerror("Error",f"Due to:{str(es)}",parent=self.root)   
-
-
-
-
 
 
 

@@ -18,24 +18,24 @@ class Face_Recognition:
         self.root.geometry("1530x790+0+0")
         self.root.title("face recognisation system")
 
-        title_lbl=Label(self.root,text="FACE RECOGNITION", font=("times new roman",35,"bold"),bg="white",fg="red")
-        title_lbl.place(x=0,y=0,width=1930,height=45)
+        title_lbl=Label(self.root,text="FACE  RECOGNITION", font=("Arial",25,"bold"),bg="white",fg="grey")
+        title_lbl.place(x=0,y=0,width=1530,height=45)
 
-        #----------left side image------
-        img_top=Image.open(r"C:\Users\my pc\Desktop\current_project\images\rectangle.jpg")
-        img_top=img_top.resize((650,700),Image.ANTIALIAS)
-        self.photoimg_top=ImageTk.PhotoImage(img_top)
+        #-----------------------left side image----------------------
+        img_left=Image.open(r"images\abc.jpeg")
+        img_left=img_left.resize((1500,1500),Image.ANTIALIAS)
+        self.photoimg_left=ImageTk.PhotoImage(img_left)
 
-        f_lbl=Label(self.root,image=self.photoimg_top)
-        f_lbl.place(x=0,y=55,width=650,height=700)
+        f_lbl=Label(self.root,image=self.photoimg_left)
+        f_lbl.place(x=0,y=40,width=650,height=700)
 
-        #---------right side image-------
-        img_top=Image.open(r"C:\Users\my pc\Desktop\current_project\images\rectangle.jpg")
+        #------------------------right side image----------------------
+        img_top=Image.open(r"images\abc.jpeg")
         img_top=img_top.resize((950,700),Image.ANTIALIAS)
         self.photoimg_top=ImageTk.PhotoImage(img_top)
 
         f_lbl=Label(self.root,image=self.photoimg_top)
-        f_lbl.place(x=650,y=55,width=950,height=700)
+        f_lbl.place(x=650,y=40,width=950,height=700)
         
         #-----------button-----------
         b1_1=Button(f_lbl,text="Face_Recognisation",cursor="hand2",font=("times new roman",15,"bold"),bg="white",fg="red")
@@ -47,7 +47,7 @@ class Face_Recognition:
             myDataList=f.readline()
             name_list=[]
             for line in myDataList:
-                entry==line.split((","))
+                entry=line.split((","))
                 name_list.append(entry[0])
             if((i not in name_list) and (r not in name_list) and (n not in name_list) and (d not in name_list)):
                 now=datetime.now()
@@ -59,7 +59,7 @@ class Face_Recognition:
 
 
 
-    #-----------face recognisation------------------
+    #----------------------face recognisation------------------
 
     def face_recog(self):
         def draw_boundray(img,classifier, scaleFactor,minNeighbours,color,text,clf):
@@ -74,7 +74,7 @@ class Face_Recognition:
                 id,predict=clf.predict(gray_image[y:y+h,x:x+w])
                 confidence=int((100*(1-predict/300)))
 
-                conn=mysql.connector.connect(host="localhost",username="root",password="ishikaraj@123",database="face_recognition")
+                conn=mysql.connector.connect(host="localhost",username="root",password="ishikaraj@123",database="database1")
                 my_cursor=conn.cursor()
 
                 my_cursor.execute("select Name from student where Student_id="+str(id))
@@ -101,13 +101,11 @@ class Face_Recognition:
                     cv2.putText(img,f"Name:{n}",(x,y-30),cv2.FONT_HERSHEY_COMPLEX,0.8,(255,255,255),3)
                     cv2.putText(img,f"Department:{d}",(x,y-5),cv2.FONT_HERSHEY_COMPLEX,0.8,(255,255,255),3)
                     self.mark_attandance(i,r,n,d)
-                    
-
                 else:
                     cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),3)
-                    cv2.putText(img,"Unknow Face",(x,y-5),cv2.FONT_HERSHEY_COMPLEX,0.8,(255,255,255),3)
+                    cv2.putText(img,"Unknown Face",(x,y-5),cv2.FONT_HERSHEY_COMPLEX,0.8,(255,255,255),3)
 
-                coord=[x,y,w,y]
+                coord=[x,y,w,h]
             return coord
 
         def recognize(img,clf,faceCascade):
