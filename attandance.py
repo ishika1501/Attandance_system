@@ -33,23 +33,6 @@ class Attandance:
                 self.var_atten_date=StringVar()
                 self.var_atten_attendance=StringVar()
 
-
-                #----------------------first image---------------------
-                img=Image.open(r"images\abc.jpeg")
-                img=img.resize((1500,800),Image.ANTIALIAS)
-                self.photoimg=ImageTk.PhotoImage(img)
-
-                f_lbl=Label(self.root,image=self.photoimg)
-                f_lbl.place(x=0,y=0,width=1500,height=100)
-
-                #---------------------second image---------------------
-                img=Image.open(r"images\abc.jpeg")
-                img=img.resize((1500,1500),Image.ANTIALIAS)
-                self.photoimg=ImageTk.PhotoImage(img)
-
-                f_lbl=Label(self.root,image=self.photoimg)
-                f_lbl.place(x=800,y=0,width=1500,height=200)
-
                 #--------------------background image----------------------
                 img3=Image.open(r"images\abc.jpeg")
                 img3=img3.resize((1500,1300),Image.ANTIALIAS)
@@ -59,26 +42,29 @@ class Attandance:
                 bg_img.place(x=0,y=0,width=1530,height=1800)
 
 
-                title_lbl=Label(bg_img,text="STUDENT MANAGEMENT SYSTEM", font=("Arial",25,"bold"),bg="white",fg="grey")
+                title_lbl=Label(bg_img,text="STUDENT MANAGEMENT SYSTEM", font=("Arial",25,"bold"),bg="#afd9e4",fg="white")
                 title_lbl.place(x=0,y=0,width=1530,height=45)
 
                 main_frame=Frame(bg_img,bd=2,bg="white")
-                main_frame.place(x=10,y=55,width=1500,height=600)
-                #left frame:
+                main_frame.place(x=10,y=55,width=1500,height=650)
+
+                #----------------------left frame--------------------------:
                 Left_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text=" Student Attendance details",font=("Arial",15,"bold"))
                 Left_frame.place(x=20,y=0,width=760,height=780)
 
-                img_left=Image.open(r"images\abc.jpeg")
-                img_left=img_left.resize((1500,1300),Image.ANTIALIAS)
+                img_left=Image.open(r"images\head.jpg")
+                img_left=img_left.resize((820,120),Image.ANTIALIAS)
                 self.photoimg_left=ImageTk.PhotoImage(img_left)
 
                 f_lbl=Label(Left_frame,image=self.photoimg_left)
-                f_lbl.place(x=0,y=3,width=850,height=120)
+                f_lbl.place(x=0,y=3,width=750,height=100)
+
+                
+
+                #-----------------------------labels and entry---------------------------------------
 
                 left_inside_frame=Frame(Left_frame,bd=2,relief=RIDGE,bg="white")
-                left_inside_frame.place(x=6,y=135,width=740,height=600)
-
-                #-----------------------------labels and entry---------------------------------------:
+                left_inside_frame.place(x=6,y=135,width=740,height=500)
 
                 #attendance id:
                 attendanceId_label=Label(left_inside_frame,textvariable=self.var_atten_id,text="Attendance ID: ",font=("Arial",13,"bold"),bg="white")
@@ -135,18 +121,18 @@ class Attandance:
                 #--------------------------buttons------------------------------
 
                 btn_frame=Frame(left_inside_frame,bd=2,relief=RIDGE,bg="white")
-                btn_frame.place(x=6,y=370,width=715,height=35)
+                btn_frame.place(x=6,y=400,width=715,height=35)
 
-                save_btn=Button(btn_frame,text="Import csv",command=self.importCsv,width=17,font=("Arial",13,"bold"),bg="blue",fg="white")
+                save_btn=Button(btn_frame,text="Import csv",command=self.importCsv,width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
                 save_btn.grid(row=0,column=0)
 
-                update_btn=Button(btn_frame,text="Export csv",command=self.exportCsv,width=17,font=("Arial",13,"bold"),bg="blue",fg="white")
+                update_btn=Button(btn_frame,text="Export csv",command=self.exportCsv,width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
                 update_btn.grid(row=0,column=1)
 
-                delete_btn=Button(btn_frame,text="Update",width=17,font=("Arial",13,"bold"),bg="blue",fg="white")
+                delete_btn=Button(btn_frame,text="Update",width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
                 delete_btn.grid(row=0,column=2)
 
-                reset_btn=Button(btn_frame,text="Reset",command=self.reset_data,width=17,font=("Arial",13,"bold"),bg="blue",fg="white")
+                reset_btn=Button(btn_frame,text="Reset",command=self.reset_data,width=16,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
                 reset_btn.grid(row=0,column=3)
 
 

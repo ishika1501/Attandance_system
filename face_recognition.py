@@ -18,8 +18,8 @@ class Face_Recognition:
         self.root.geometry("1530x790+0+0")
         self.root.title("face recognisation system")
 
-        title_lbl=Label(self.root,text="FACE  RECOGNITION", font=("Arial",25,"bold"),bg="white",fg="grey")
-        title_lbl.place(x=0,y=0,width=1530,height=45)
+        title_lbl=Label(self.root,text="FACE  RECOGNITION", font=("Arial",25,"bold"),bg="#afd9e4",fg="white")
+        title_lbl.place(x=0,y=0,width=1530,height=70)
 
         #-----------------------left side image----------------------
         img_left=Image.open(r"images\abc.jpeg")
@@ -27,21 +27,21 @@ class Face_Recognition:
         self.photoimg_left=ImageTk.PhotoImage(img_left)
 
         f_lbl=Label(self.root,image=self.photoimg_left)
-        f_lbl.place(x=0,y=40,width=650,height=700)
+        f_lbl.place(x=0,y=60,width=650,height=700)
 
         #------------------------right side image----------------------
-        img_top=Image.open(r"images\abc.jpeg")
+        img_top=Image.open(r"images\face_reco.jpg")
         img_top=img_top.resize((950,700),Image.ANTIALIAS)
         self.photoimg_top=ImageTk.PhotoImage(img_top)
 
         f_lbl=Label(self.root,image=self.photoimg_top)
-        f_lbl.place(x=650,y=40,width=950,height=700)
+        f_lbl.place(x=650,y=60,width=950,height=700)
         
         #-----------button-----------
-        b1_1=Button(f_lbl,text="Face_Recognisation",cursor="hand2",font=("times new roman",15,"bold"),bg="white",fg="red")
-        b1_1.place(x=360,y=620,width=200,height=40)
+        b1_1=Button(f_lbl,text="RECOGNISE FACE",cursor="hand2",font=("Arial",20,"bold"),bg="#afd9e4",fg="white")
+        b1_1.place(x=140,y=620,width=370,height=40)
 
-    #---------------attandance----------------------- 
+    #--------------- mark attandance----------------------- 
     def mark_attandance(self,i,r,n,d):
         with open("ishika.csv","r+",newline="\n") as f:
             myDataList=f.readline()
@@ -59,7 +59,7 @@ class Face_Recognition:
 
 
 
-    #----------------------face recognisation------------------
+    #----------------------face recognition------------------
 
     def face_recog(self):
         def draw_boundray(img,classifier, scaleFactor,minNeighbours,color,text,clf):

@@ -16,27 +16,27 @@ class Train:
         self.root.geometry("1530x790+0+0")
         self.root.title("face recognisation system")
 
-        title_lbl=Label(self.root,text="TRAIN DATA SET", font=("Arial",25,"bold"),bg="white",fg="grey")
-        title_lbl.place(x=0,y=0,width=1530,height=45)
+        title_lbl=Label(self.root,text="TRAIN YOUR DATA SET", font=("Arial",25,"bold"),bg="#afd9e4",fg="white")
+        title_lbl.place(x=0,y=0,width=1530,height=70)
 
-        img_top=Image.open(r"images\abc.jpeg")
-        img_top=img_top.resize((1600,900),Image.ANTIALIAS)
+        img_top=Image.open(r"images\head.jpg")
+        img_top=img_top.resize((1500,300),Image.ANTIALIAS)
         self.photoimg_top=ImageTk.PhotoImage(img_top)
 
         f_lbl=Label(self.root,image=self.photoimg_top)
         f_lbl.place(x=0,y=55,width=1530,height=320)
 
         #---------------------button----------------------
-        b1_1=Button(self.root,text="TRAIN DATA",command=self.train_classifier,cursor="hand2",font=("Arial",15,"bold"),bg="blue",fg="white")
-        b1_1.place(x=0,y=360,width=1530,height=40)
+        b1_1=Button(self.root,text="TO TRAIN DATA CLICK HERE",command=self.train_classifier,cursor="hand2",font=("Arial",18,"bold"),bg="#afd9e4",fg="white")
+        b1_1.place(x=0,y=370,width=1530,height=40)
 
-
-        img_bottom=Image.open(r"images\abc.jpeg")
-        img_bottom=img_bottom.resize((1600,900),Image.ANTIALIAS)
+    
+        img_bottom=Image.open(r"images\Group2.jpg")
+        img_bottom=img_bottom.resize((1500,300),Image.ANTIALIAS)
         self.photoimg_bottom=ImageTk.PhotoImage(img_bottom)
 
         f_lbl=Label(self.root,image=self.photoimg_bottom)
-        f_lbl.place(x=0,y=400,width=1530,height=380)
+        f_lbl.place(x=0,y=410,width=1530,height=380)
 
     def train_classifier(self):
         data_dir=("data")

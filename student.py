@@ -123,7 +123,7 @@ class Student:
         studentDiv_label=Label(class_student_frame,text="Student Division:",font=("Arial",13,"bold"),bg="white")
         studentDiv_label.grid(row=1,column=0,padx=2,pady=10,sticky=W)
 
-        div_combo=ttk.Combobox(class_student_frame,textvariable=self.var_div,font=("Arial",10,"bold"),width=17,state="read only")
+        div_combo=ttk.Combobox(class_student_frame,textvariable=self.var_div,font=("Arial",10,"bold"),width=15,state="read only")
         div_combo["values"]=("Select Division","A","B","C")
         div_combo.current(0)
         div_combo.grid(row=1,column=1,padx=2,pady=10,sticky=W)
@@ -139,7 +139,7 @@ class Student:
         gender_entry=Label(class_student_frame,text="Gender:",font=("Arial",13,"bold"),bg="white")
         gender_entry.grid(row=2,column=0,padx=2,pady=10,sticky=W)
 
-        gender_combo=ttk.Combobox(class_student_frame,textvariable=self.var_gender,font=("Arial",10,"bold"),width=17,state="read only")
+        gender_combo=ttk.Combobox(class_student_frame,textvariable=self.var_gender,font=("Arial",10,"bold"),width=15,state="read only")
         gender_combo["values"]=("Male","Female","other")
         gender_combo.current(0)
         gender_combo.grid(row=2,column=1,padx=2,pady=10,sticky=W)
@@ -189,7 +189,7 @@ class Student:
 
         #---------------------------------------------buttons frames-----------------------------------------------------
         btn_frame=Frame(class_student_frame,bd=2,relief=RIDGE,bg="white")
-        btn_frame.place(x=5,y=330,width=745,height=70)
+        btn_frame.place(x=5,y=300,width=720,height=40)
 
         save_btn=Button(btn_frame,text="SAVE",command=self.add_data,width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
         save_btn.grid(row=0,column=0)
@@ -203,16 +203,14 @@ class Student:
         reset_btn=Button(btn_frame,text="RESET",command=self.reset_data,width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
         reset_btn.grid(row=0,column=3)
 
-        
+        btn1_frame=Frame(class_student_frame,bd=2,relief=RIDGE,bg="white")
+        btn1_frame.place(x=5,y=340,width=720,height=40)
 
-        take_photo_btn=Button(btn_frame,text="TAKE PHOTO",command=self.generate_dataset,width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
-        take_photo_btn.grid(row=1,column=0)
+        take_photo_btn=Button(btn1_frame,text="TAKE PHOTO",command=self.generate_dataset,width=72,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
+        take_photo_btn.grid(row=0,column=0)
 
-        resetphoto_btn=Button(btn_frame,text="RESET PHOTO",width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
-        resetphoto_btn.grid(row=1,column=1)
-
-
-
+        #resetphoto_btn=Button(btn_frame,text="RESET PHOTO",width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
+        #resetphoto_btn.grid(row=1,column=1)
 
         #---------------------------------------Right side label frame---------------------------------------------------------
 
@@ -490,7 +488,7 @@ class Student:
                 self.reset_data()
                 conn.close()
 
-                #---------------Load predefined data on face frontals from opencv
+                #--------------------Load predefined data on face frontals from opencv----------------------
                 face_classifier=cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 
                 def face_cropped(img):
