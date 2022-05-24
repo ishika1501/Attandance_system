@@ -454,11 +454,10 @@ class Student:
     #---------------------Generating dataset /take photo sample----------------------
     def generate_dataset(self):
         if self.var_dep.get()=="Select Department" or self.var_std_name.get()=="" or self.var_std_id.get()=="":
-            messagebox.showerror("Error all fields are required",parent=self.root)
+            messagebox.showerror("Error", "All fields are required",parent=self.root)
         else:
             try:
                 conn=mysql.connector.connect(host="localhost",username="root",password="ishikaraj@123",database="database1")
-                my_cursor=conn.cursor()
                 my_cursor=conn.cursor()
                 my_cursor.execute("select * from student")
                 myresult=my_cursor.fetchall()
@@ -494,12 +493,12 @@ class Student:
                 def face_cropped(img):
                     gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
                     faces=face_classifier.detectMultiScale(gray,1.3,5)
-                    #scaling fcator=1.3,min neigbour=5
+                    #scaling factor=1.3,min neighbor=5
 
                     for(x,y,w,h) in faces:
                         face_cropped=img[y:y+h,x:x+w]
                         return face_cropped
-                cap=cv2.VideoCapture(0)
+                cap=cv2.VideoCapture(0) #to open camera bydefault
                 img_id=0
                 while True:
                     ret,my_frame=cap.read()

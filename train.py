@@ -61,7 +61,7 @@ class Train:
         clf.train(faces,ids)
         clf.write("classifier.xml")
         cv2.destroyAllWindows()
-        messagebox.showinfo("Result","Training datasets completed")
+        messagebox.showinfo("Result","Training datasets completed!!")
 
                
 

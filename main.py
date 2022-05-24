@@ -5,7 +5,8 @@ import os
 from student import Student
 from train import Train
 from face_recognition import Face_Recognition
-from attandance import Attandance
+from attendance import Attendance
+import cv2
 
 
 class Face_recognition_system:
@@ -35,10 +36,10 @@ class Face_recognition_system:
               self.photoimg4=ImageTk.PhotoImage(img4)
 
               b1=Button(bg_img,image=self.photoimg4,command=self.student_details,cursor="hand2")
-              b1.place(x=350,y=100,width=220,height=220)
+              b1.place(x=150,y=100,width=220,height=220)
 
               b1_1=Button(bg_img,text="Student Details",command=self.student_details,cursor="hand2",font=("Arial",15,"bold"),bg="white",fg="grey")
-              b1_1.place(x=350,y=300,width=220,height=40)
+              b1_1.place(x=150,y=300,width=220,height=40)
 
 
               #-----------------------detect face----------------------
@@ -58,10 +59,10 @@ class Face_recognition_system:
               self.photoimg6=ImageTk.PhotoImage(img6)
 
               b1=Button(bg_img,image=self.photoimg6,cursor="hand2",command=self.attendance_data)
-              b1.place(x=950,y=100,width=220,height=220)
+              b1.place(x=900,y=100,width=220,height=220)
 
               b1_1=Button(bg_img,text="Attandance",cursor="hand2",command=self.attendance_data,font=("Arial",15,"bold"),bg="white",fg="grey")
-              b1_1.place(x=950,y=300,width=220,height=40)
+              b1_1.place(x=900,y=300,width=220,height=40)
 
               #---------------------Train data button-----------------------
               img8=Image.open(r"images\train_data.jpg")
@@ -69,10 +70,10 @@ class Face_recognition_system:
               self.photoimg8=ImageTk.PhotoImage(img8)
 
               b1=Button(bg_img,image=self.photoimg8,cursor="hand2",command=self.train_data)
-              b1.place(x=350,y=380,width=220,height=220)
+              b1.place(x=400,y=100,width=220,height=220)
 
               b1_1=Button(bg_img,text="Train Data",cursor="hand2",command=self.train_data,font=("Arial",15,"bold"),bg="white",fg="grey")
-              b1_1.place(x=350,y=580,width=220,height=40)
+              b1_1.place(x=400,y=300,width=220,height=40)
 
               #--------------------Photo face button----------------------
               img99=Image.open(r"images\photo.jpg")
@@ -80,21 +81,21 @@ class Face_recognition_system:
               self.photoimg99=ImageTk.PhotoImage(img99)
 
               b1=Button(bg_img,image=self.photoimg99,cursor="hand2",command=self.open_img)
-              b1.place(x=650,y=380,width=220,height=220)
+              b1.place(x=1150,y=100,width=220,height=220)
 
               b1_1=Button(bg_img,text="Photo Face",cursor="hand2",command=self.open_img,font=("Arial",15,"bold"),bg="white",fg="grey")
-              b1_1.place(x=650,y=580,width=220,height=40)
+              b1_1.place(x=1150,y=300,width=220,height=40)
 
               #--------------------About Developer button--------------------
-              img10=Image.open(r"images\developer.jpg")
-              img10=img10.resize((200,200),Image.ANTIALIAS)
-              self.photoimg9=ImageTk.PhotoImage(img10)
+              #img10=Image.open(r"images\developer.jpg")
+              #img10=img10.resize((200,200),Image.ANTIALIAS)
+              #self.photoimg9=ImageTk.PhotoImage(img10)
 
-              b1=Button(bg_img,image=self.photoimg9)
-              b1.place(x=950,y=380,width=220,height=220)
+              #b1=Button(bg_img,image=self.photoimg9)
+              #b1.place(x=950,y=380,width=220,height=220)
 
-              b1_1=Button(bg_img,text="Developer",cursor="hand2",font=("Arial",15,"bold"),bg="white",fg="grey")
-              b1_1.place(x=950,y=580,width=220,height=40)
+              #b1_1=Button(bg_img,text="Developer",cursor="hand2",font=("Arial",15,"bold"),bg="white",fg="grey")
+              #b1_1.place(x=950,y=580,width=220,height=40)
 
     #-------------------image opening--------------------
        def open_img(self):
@@ -117,7 +118,7 @@ class Face_recognition_system:
               
        def attendance_data(self):
               self.new_window=Toplevel(self.root)
-              self.app=Attandance(self.new_window)   
+              self.app=Attendance(self.new_window)   
 
 
 

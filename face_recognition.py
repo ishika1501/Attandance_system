@@ -41,7 +41,7 @@ class Face_Recognition:
         b1_1=Button(f_lbl,text="RECOGNISE FACE",cursor="hand2",font=("Arial",20,"bold"),bg="#afd9e4",fg="white")
         b1_1.place(x=140,y=620,width=370,height=40)
 
-    #--------------- mark attandance----------------------- 
+    #--------------- mark attendance----------------------- 
     def mark_attandance(self,i,r,n,d):
         with open("ishika.csv","r+",newline="\n") as f:
             myDataList=f.readline()
@@ -100,7 +100,7 @@ class Face_Recognition:
                     cv2.putText(img,f"Roll:{r}",(x,y-55),cv2.FONT_HERSHEY_COMPLEX,0.8,(255,255,255),3)
                     cv2.putText(img,f"Name:{n}",(x,y-30),cv2.FONT_HERSHEY_COMPLEX,0.8,(255,255,255),3)
                     cv2.putText(img,f"Department:{d}",(x,y-5),cv2.FONT_HERSHEY_COMPLEX,0.8,(255,255,255),3)
-                    self.mark_attandance(i,r,n,d)
+                    self.mark_attendance(i,r,n,d)
                 else:
                     cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),3)
                     cv2.putText(img,"Unknown Face",(x,y-5),cv2.FONT_HERSHEY_COMPLEX,0.8,(255,255,255),3)
