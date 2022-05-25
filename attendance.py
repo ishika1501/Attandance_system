@@ -23,7 +23,7 @@ class Attendance:
         self.root.geometry("1530x790+0+0")
         self.root.title("face recognisation system")
 
-        #----------------------variables---------------------
+        #---------------------------------------------------------------variables----------------------------------------------------------------
         self.var_atten_id=StringVar()
         self.var_atten_roll=StringVar()
         self.var_atten_name=StringVar()
@@ -32,13 +32,13 @@ class Attendance:
         self.var_atten_date=StringVar()
         self.var_atten_attendance=StringVar()
 
-                #--------------------background image----------------------
+        #----------------------------------------------------------background image-------------------------------------------------------------
         img3=Image.open(r"images\abc.jpeg")
-        img3=img3.resize((1500,1300),Image.ANTIALIAS)
+        img3=img3.resize((1530,1300),Image.ANTIALIAS)
         self.photoimg3=ImageTk.PhotoImage(img3)
 
         bg_img=Label(self.root,image=self.photoimg3)
-        bg_img.place(x=0,y=0,width=1530,height=1800)
+        bg_img.place(x=0,y=0,width=1530,height=1300)
 
 
         title_lbl=Label(bg_img,text="STUDENT MANAGEMENT SYSTEM", font=("Arial",25,"bold"),bg="#afd9e4",fg="white")
@@ -47,23 +47,23 @@ class Attendance:
         main_frame=Frame(bg_img,bd=2,bg="white")
         main_frame.place(x=10,y=55,width=1500,height=650)
 
-                #----------------------left frame--------------------------:
+        #--------------------------------------------------------------left frame----------------------------------------------------------------
         Left_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text=" Student Attendance details",font=("Arial",15,"bold"))
-        Left_frame.place(x=20,y=0,width=760,height=780)
+        Left_frame.place(x=20,y=0,width=760,height=600)
 
-        img_left=Image.open(r"images\head.jpg")
-        img_left=img_left.resize((820,120),Image.ANTIALIAS)
+        img_left=Image.open(r"images\banner.jpg")
+        img_left=img_left.resize((730,100),Image.ANTIALIAS)
         self.photoimg_left=ImageTk.PhotoImage(img_left)
 
         f_lbl=Label(Left_frame,image=self.photoimg_left)
-        f_lbl.place(x=0,y=3,width=750,height=100)
+        f_lbl.place(x=0,y=3,width=730,height=100)
 
                 
 
-        #-----------------------------labels and entry---------------------------------------
+        #-----------------------------------------------------------labels and entry-------------------------------------------------------------
 
         left_inside_frame=Frame(Left_frame,bd=2,relief=RIDGE,bg="white")
-        left_inside_frame.place(x=6,y=135,width=740,height=500)
+        left_inside_frame.place(x=7,y=135,width=740,height=430)
 
         #attendance id:
         attendanceId_label=Label(left_inside_frame,text="Attendance ID: ",font=("Arial",13,"bold"),bg="white")
@@ -118,19 +118,19 @@ class Attendance:
         self.atten_status.grid(row=3,column=1,padx=2,pady=10,sticky=W)
         self.atten_status.current(0)
 
-        #--------------------------buttons------------------------------
+        #--------------------------------------------------------------buttons--------------------------------------------------------------------
 
         btn_frame=Frame(left_inside_frame,bd=2,relief=RIDGE,bg="white")
-        btn_frame.place(x=6,y=400,width=715,height=35)
+        btn_frame.place(x=80,y=350,width=534,height=35)
 
         save_btn=Button(btn_frame,text="Import csv",command=self.importCsv,width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
         save_btn.grid(row=0,column=0)
 
-        update_btn=Button(btn_frame,text="Export csv",command=self.exportCsv,width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
-        update_btn.grid(row=0,column=1)
+        export_btn=Button(btn_frame,text="Export csv",command=self.exportCsv,width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
+        export_btn.grid(row=0,column=1)
 
-        delete_btn=Button(btn_frame,text="Update",width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
-        delete_btn.grid(row=0,column=2)
+        #update_btn=Button(btn_frame,text="Update",width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
+        #update_btn.grid(row=0,column=2)
 
         reset_btn=Button(btn_frame,text="Reset",command=self.reset_data,width=16,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
         reset_btn.grid(row=0,column=3)
@@ -138,14 +138,21 @@ class Attendance:
 
 
 
-        #-----------------------right frame----------------------
+        #------------------------------------------------------------Right frame----------------------------------------------------------------
         Right_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text="Attendance details",font=("Arial",15,"bold"))
-        Right_frame.place(x=810,y=10,width=640,height=550)
+        Right_frame.place(x=810,y=2,width=640,height=600)
 
         table_frame=Frame(Right_frame,bd=2,relief=RIDGE,bg="white")
-        table_frame.place(x=5,y=10,width=600,height=445)
+        table_frame.place(x=5,y=10,width=627,height=400)
 
-        #--------------------------scroll bar and table-----------------------
+        img_right=Image.open(r"images\rightf.jpg")
+        img_right=img_right.resize((620,150),Image.ANTIALIAS)
+        self.photoimg_right=ImageTk.PhotoImage(img_right)
+
+        f_lbl=Label(Right_frame,image=self.photoimg_right)
+        f_lbl.place(x=0,y=420,width=620,height=120)
+
+        #---------------------------------------------------------scroll bar and table----------------------------------------------------------
         scroll_x=ttk.Scrollbar(table_frame,orient=HORIZONTAL)
         scroll_y=ttk.Scrollbar(table_frame,orient=VERTICAL)
 
@@ -183,23 +190,23 @@ class Attendance:
 
 
 
-        #---------------------fetch data---------------------
+    #------------------------------------------------------------------fetch data---------------------------------------------------------------
 
     def fetchData(self,rows):
-        self.AttendanceReportTable.delete(*self.AttendanceReporttable.get_children())
+        self.AttendanceReportTable.delete(*self.AttendanceReportTable.get_children())
         for i in rows:
             self.AttendanceReportTable.insert("",END,Values=i)
-    #------------import csv-----------
+    #------------------------------------------------------------------import csv----------------------------------------------------------------
     def importCsv(self):
         global mydata
         mydata.clear()
-        fln=filedialog.askopenfilename(initialdir=os.getcwd(),title="Open CSV",filetype=(("CSV File","*.csv"),("All File","*.*")),parent=self.root)
+        fln=filedialog.askopenfilename(initialdir=os.getcwd(),title="Open CSV",filetypes=(("CSV File","*.csv"),("All File","*.*")),parent=self.root)
         with open(fln) as myfile:
             csvread=csv.reader(myfile,delimiter=",")
             for i in csvread:
                 mydata.append(i)
             self.fetchData(mydata)  
-    #------------export csv-------------
+    #--------------------------------------------------------------------export csv--------------------------------------------------------------
     def exportCsv(self):
         try:
             if len(mydata)<1:
@@ -207,13 +214,13 @@ class Attendance:
                 return False
             fln=filedialog.asksaveasfilename(initialdir=os.getcwd(),title="Open CSV",filetypes=(("CSV File","*.csv*"),("All File","*.*")),parent=self.root)
             with open(fln,mode="w",newline="") as myfile:
-                exp_write=csv.writer(myfiles,delimiter=",")
+                exp_write=csv.writer(myfile,delimiter=",")
                 for i in mydata:
                         exp_write.writerow(i)
                 messagebox.showinfo("Data Export","Your data exported to "+os.path.basename(fln)+"succesfully")  
         except Exception as es:
                 messagebox.showerror("Error",f"Due to:{str(es)}",parent=self.root)             
-    #----------------------get coursor---------------------
+    #----------------------------------------------------------------------get coursor-----------------------------------------------------------
     def get_cursor(self,event=""):
         cursor_row=self.AttendanceReportTable.focus()
         content=self.AttendanceReportTable.item(cursor_row)
@@ -226,6 +233,8 @@ class Attendance:
         self.var_atten_date.set(rows[5])
         self.var_atten_attendance.set(rows[6])
 
+
+#-------------------------------------------------------------------------reset data-------------------------------------------------------------
     def reset_data(self):
         self.var_atten_id.set("")
         self.var_atten_roll.set("")

@@ -21,15 +21,15 @@ class Face_Recognition:
         title_lbl=Label(self.root,text="FACE  RECOGNITION", font=("Arial",25,"bold"),bg="#afd9e4",fg="white")
         title_lbl.place(x=0,y=0,width=1530,height=70)
 
-        #-----------------------left side image----------------------
-        img_left=Image.open(r"images\abc.jpeg")
-        img_left=img_left.resize((1500,1500),Image.ANTIALIAS)
+        #--------------------------------------------------------left side image---------------------------------------------------------------
+        img_left=Image.open(r"images\abc3.jpg")
+        img_left=img_left.resize((1000,800),Image.ANTIALIAS)
         self.photoimg_left=ImageTk.PhotoImage(img_left)
 
         f_lbl=Label(self.root,image=self.photoimg_left)
-        f_lbl.place(x=0,y=60,width=650,height=700)
+        f_lbl.place(x=-300,y=60,width=1000,height=700)
 
-        #------------------------right side image----------------------
+        #------------------------------------------------------right side image-----------------------------------------------------------------
         img_top=Image.open(r"images\face_reco.jpg")
         img_top=img_top.resize((950,700),Image.ANTIALIAS)
         self.photoimg_top=ImageTk.PhotoImage(img_top)
@@ -37,12 +37,12 @@ class Face_Recognition:
         f_lbl=Label(self.root,image=self.photoimg_top)
         f_lbl.place(x=650,y=60,width=950,height=700)
         
-        #-----------button-----------
-        b1_1=Button(f_lbl,text="RECOGNISE FACE",cursor="hand2",font=("Arial",20,"bold"),bg="#afd9e4",fg="white")
+        #-----------------------------------------------------------button-----------------------------------------------------------------------
+        b1_1=Button(f_lbl,text="RECOGNISE FACE",command=self.face_recog,cursor="hand2",font=("Arial",20,"bold"),bg="#026573",fg="white")
         b1_1.place(x=140,y=620,width=370,height=40)
 
-    #--------------- mark attendance----------------------- 
-    def mark_attandance(self,i,r,n,d):
+    #----------------------------------------------------------- mark attendance---------------------------------------------------------------- 
+    def mark_attendance(self,i,r,n,d):
         with open("ishika.csv","r+",newline="\n") as f:
             myDataList=f.readline()
             name_list=[]
@@ -59,7 +59,7 @@ class Face_Recognition:
 
 
 
-    #----------------------face recognition------------------
+    #-------------------------------------------------------------face recognition----------------------------------------------------------------
 
     def face_recog(self):
         def draw_boundray(img,classifier, scaleFactor,minNeighbours,color,text,clf):

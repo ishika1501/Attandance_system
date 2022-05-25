@@ -15,7 +15,7 @@ class Student:
         self.root.geometry("1530x790+0+0")
         self.root.title("face recognisation system")
 
-        #-------------------Variables-------------------------
+        #------------------------------------------------------------Variables-------------------------------------------------------------------
         self.var_dep=StringVar()
         self.var_course=StringVar()
         self.var_year=StringVar()
@@ -31,7 +31,7 @@ class Student:
         self.var_address=StringVar()
         self.var_teacher=StringVar()
 
-         #--------------------background image---------------------
+         #----------------------------------------------------------background image--------------------------------------------------------------
         img3=Image.open(r"C:\Users\my pc\Desktop\current_project\images\abc.jpeg")
         img3=img3.resize((1530,1170),Image.ANTIALIAS)
         self.photoimg3=ImageTk.PhotoImage(img3)
@@ -40,29 +40,29 @@ class Student:
         bg_img.place(x=0,y=0,width=1530,height=1170)
 
 
-        #---------------------background label---------------------
+        #-----------------------------------------------------------background label-------------------------------------------------------------
         title_lbl=Label(bg_img,text="STUDENT MANAGEMENT SYSTEM", font=("Arial",25,"bold"),bg="#afd9e4",fg="white")
         title_lbl.place(x=0,y=0,width=1530,height=50)
 
-        #------------------Main label frame---------------------
+        #------------------------------------------------------------Main label frame------------------------------------------------------------
         main_frame=Frame(bg_img,bd=2,bg="white")
         main_frame.place(x=6,y=55,width=1500,height=700)
 
-        #---------------------left side label frame---------------------
+        #---------------------------------------------------------left side label frame----------------------------------------------------------
 
         Left_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text="Student details",font=("Arial",13,"bold"))
-        Left_frame.place(x=20,y=0,width=760,height=700)
+        Left_frame.place(x=20,y=0,width=760,height=680)
 
-        img_left=Image.open(r"images\Group.jpg")
+        img_left=Image.open(r"images\banner.jpg")
         img_left=img_left.resize((700,120),Image.ANTIALIAS)
         self.photoimg_left=ImageTk.PhotoImage(img_left)
 
         f_lbl=Label(Left_frame,image=self.photoimg_left)
         f_lbl.place(x=25,y=0,width=700,height=120)
 
-        #-----------------------current course details----------------------
+        #---------------------------------------------------------current course details---------------------------------------------------------
         current_course_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text="Current course",font=("Arial",15,"bold"))
-        current_course_frame.place(x=30,y=135,width=740,height=130)
+        current_course_frame.place(x=30,y=135,width=740,height=120)
 
         #department:
         dep_label=Label(current_course_frame,text="Department",font=("Arial",13,"bold"),bg="white")
@@ -101,9 +101,9 @@ class Student:
         semester_combo.current(0)
         semester_combo.grid(row=1,column=3,padx=2,pady=10,sticky=W)
 
-        #-----------------------Class student details--------------------
+        #-------------------------------------------------------Class student details------------------------------------------------------------
         class_student_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text="Class student information",font=("Arial",15,"bold"))
-        class_student_frame.place(x=30,y=260,width=740,height=430)
+        class_student_frame.place(x=30,y=260,width=740,height=410)
 
         #studentID:
         studentID_label=Label(class_student_frame,text="Student ID:",font=("Arial",13,"bold"),bg="white")
@@ -179,7 +179,7 @@ class Student:
         Teachername_label=ttk.Entry(class_student_frame,textvariable=self.var_teacher,width=20)
         Teachername_label.grid(row=4,column=3,padx=10,sticky=W)
 
-        #-------------------------------------radio Button-----------------------------------------------------
+        #---------------------------------------------------------radio Button---------------------------------------------------------------------
         self.var_radio1=StringVar()
         radiobtn1=ttk.Radiobutton(class_student_frame,variable=self.var_radio1,text="Take photo sample",value="Yes")
         radiobtn1.grid(row=6,column=0)
@@ -187,44 +187,44 @@ class Student:
         radiobtn2=ttk.Radiobutton(class_student_frame,variable=self.var_radio1,text="No photo sample",value="No")
         radiobtn2.grid(row=6,column=1)
 
-        #---------------------------------------------buttons frames-----------------------------------------------------
+        #---------------------------------------------------------buttons frames------------------------------------------------------------------
         btn_frame=Frame(class_student_frame,bd=2,relief=RIDGE,bg="white")
-        btn_frame.place(x=5,y=300,width=720,height=40)
+        btn_frame.place(x=15,y=300,width=684,height=38)
 
-        save_btn=Button(btn_frame,text="SAVE",command=self.add_data,width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
+        save_btn=Button(btn_frame,text="SAVE",command=self.add_data,width=16,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
         save_btn.grid(row=0,column=0)
 
-        update_btn=Button(btn_frame,text="UPDATE",command=self.update_data,width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
+        update_btn=Button(btn_frame,text="UPDATE",command=self.update_data,width=16,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
         update_btn.grid(row=0,column=1)
 
-        delete_btn=Button(btn_frame,text="DELETE",command=self.delete_data,width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
+        delete_btn=Button(btn_frame,text="DELETE",command=self.delete_data,width=16,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
         delete_btn.grid(row=0,column=2)
 
-        reset_btn=Button(btn_frame,text="RESET",command=self.reset_data,width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
+        reset_btn=Button(btn_frame,text="RESET",command=self.reset_data,width=16,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
         reset_btn.grid(row=0,column=3)
 
         btn1_frame=Frame(class_student_frame,bd=2,relief=RIDGE,bg="white")
-        btn1_frame.place(x=5,y=340,width=720,height=40)
+        btn1_frame.place(x=15,y=338,width=684,height=38)
 
-        take_photo_btn=Button(btn1_frame,text="TAKE PHOTO",command=self.generate_dataset,width=72,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
+        take_photo_btn=Button(btn1_frame,text="TAKE PHOTO",command=self.generate_dataset,width=67,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
         take_photo_btn.grid(row=0,column=0)
 
         #resetphoto_btn=Button(btn_frame,text="RESET PHOTO",width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
         #resetphoto_btn.grid(row=1,column=1)
 
-        #---------------------------------------Right side label frame---------------------------------------------------------
+        #---------------------------------------------------------Right side label frame---------------------------------------------------------
 
         Right_frame=LabelFrame(main_frame,bd=2,bg="white",relief=RIDGE,text="Student details",font=("Arial",13,"bold"))
-        Right_frame.place(x=810,y=0,width=660,height=650)
+        Right_frame.place(x=810,y=0,width=660,height=680)
 
-        img_right=Image.open(r"C:\Users\my pc\Desktop\current_project\images\abc.jpeg")
-        img_right=img_right.resize((750,700),Image.ANTIALIAS)
+        img_right=Image.open(r"images\rightf.jpg")
+        img_right=img_right.resize((700,300),Image.ANTIALIAS)
         self.photoimg_right=ImageTk.PhotoImage(img_right)
 
         f_lbl=Label(Right_frame,image=self.photoimg_right)
-        f_lbl.place(x=0,y=0,width=730,height=100)
+        f_lbl.place(x=0,y=0,width=650,height=300)
 
-        #-------------------------------------------------Search system--------------------------------------------------------
+        #---------------------------------------------------------------Search system------------------------------------------------------------
         #search_frame=LabelFrame(Right_frame,bd=2,bg="white",relief=RIDGE,text="Search system",font=("Arial",15,"bold"))
         #search_frame.place(x=10,y=120,width=630,height=70)
 
@@ -246,9 +246,9 @@ class Student:
         #showall_btn=Button(search_frame,text="Show All",width=12,font=("Arial",10,"bold"),bg="#afd9e4",fg="white")
         #showall_btn.grid(row=0,column=4,padx=1)
 
-        #---------------------------table frame--------------------------
+        #--------------------------------------------------------------table frame---------------------------------------------------------------
         table_frame=Frame(Right_frame,bd=2,bg="white",relief=RIDGE)
-        table_frame.place(x=10,y=210,width=630,height=270)
+        table_frame.place(x=10,y=300,width=630,height=270)
 
         scroll_x=ttk.Scrollbar(table_frame,orient=HORIZONTAL)
         scroll_y=ttk.Scrollbar(table_frame,orient=VERTICAL)
@@ -297,9 +297,9 @@ class Student:
         self.student_table.bind("<ButtonRelease>",self.get_cursor)
         self.fetch_data()
 
-    #----------------------------Function Declartion ---------------------------------
+    #--------------------------------------------------------------Function Declartion ----------------------------------------------------------
 
-    #----------------------------Add data ---------------------------------
+    #-------------------------------------------------------------------Add data ----------------------------------------------------------------
     def add_data(self):
         if self.var_dep.get()=="Select Department" or self.var_std_name.get()=="" or self.var_std_id.get()=="":
             messagebox.showerror("Error","All fields are required",parent=self.root)
@@ -333,7 +333,7 @@ class Student:
                 messagebox.showerror("Error",f"Due To:{str(es)}",parent=self.root)
 
 
-    #----------------------------------------fetch data--------------------------------
+    #----------------------------------------------------------------fetch data------------------------------------------------------------------
     def fetch_data(self):
         conn=mysql.connector.connect(host="localhost",username="root",password="ishikaraj@123",database="database1")
         my_cursor=conn.cursor()
@@ -347,7 +347,7 @@ class Student:
             conn.commit()
         conn.close()  
 
-    #---------------------get cursor--------------------- 
+    #-----------------------------------------------------------------get cursor----------------------------------------------------------------- 
     def get_cursor(self,event=""):
         cursor_focus=self.student_table.focus()
         content=self.student_table.item(cursor_focus)
@@ -369,7 +369,7 @@ class Student:
         self.var_teacher.set(data[13]),
         self.var_radio1.set(data[14])
 
-    #----------------------------DATA update------------------------    
+    #--------------------------------------------------------------------DATA update-------------------------------------------------------------    
 
     def update_data(self):
         if self.var_dep.get()=="Select Department" or self.var_std_name.get()=="" or self.var_std_id.get()=="":
@@ -408,7 +408,7 @@ class Student:
             except Exception as es:
                 messagebox.showerror("Error",f"Due to:{str(es)}",parent=self.root)
 
-    #--------------------------DELETE FUNCTION-------------------------
+    #-----------------------------------------------------------------DELETE FUNCTION------------------------------------------------------------
     def delete_data(self):
         if self.var_std_id.get()=="":
             messagebox.showerror("Error","Student id must be required",parent=self.root)
@@ -433,7 +433,7 @@ class Student:
 
 
 
-   #----------------------RESET DATA---------------------
+   #--------------------------------------------------------------------RESET DATA---------------------------------------------------------------
     def reset_data(self): 
        self.var_dep.set("Select Department")
        self.var_course.set("Select Course")
@@ -451,7 +451,7 @@ class Student:
        self.var_teacher.set("")
        self.var_radio1.set("")
 
-    #---------------------Generating dataset /take photo sample----------------------
+    #-------------------------------------------------------Generating dataset /take photo sample------------------------------------------------
     def generate_dataset(self):
         if self.var_dep.get()=="Select Department" or self.var_std_name.get()=="" or self.var_std_id.get()=="":
             messagebox.showerror("Error", "All fields are required",parent=self.root)
@@ -487,7 +487,7 @@ class Student:
                 self.reset_data()
                 conn.close()
 
-                #--------------------Load predefined data on face frontals from opencv----------------------
+                #-------------------------------------------Load predefined data on face frontals from opencv------------------------------------
                 face_classifier=cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 
                 def face_cropped(img):

@@ -6,7 +6,7 @@ from turtle import update
 from PIL import Image,ImageTk
 from tkinter import messagebox
 import mysql.connector
-import cv2
+from cv2 import cv2
 import os
 import numpy as np
 
@@ -16,27 +16,30 @@ class Train:
         self.root.geometry("1530x790+0+0")
         self.root.title("face recognisation system")
 
-        title_lbl=Label(self.root,text="TRAIN YOUR DATA SET", font=("Arial",25,"bold"),bg="#afd9e4",fg="white")
-        title_lbl.place(x=0,y=0,width=1530,height=70)
+        title_lbl=Label(self.root,text="TRAIN YOUR DATA SET", font=("Arial",30,"bold"),bg="#afd9e4",fg="white")
+        title_lbl.place(x=0,y=0,width=1530,height=75)
 
-        img_top=Image.open(r"images\head.jpg")
-        img_top=img_top.resize((1500,300),Image.ANTIALIAS)
+
+        #------------------------------------------------------------top image-------------------------------------------------------------------
+        img_top=Image.open(r"images\imagebottom.jpg")
+        img_top=img_top.resize((1530,320),Image.ANTIALIAS)
         self.photoimg_top=ImageTk.PhotoImage(img_top)
 
         f_lbl=Label(self.root,image=self.photoimg_top)
         f_lbl.place(x=0,y=55,width=1530,height=320)
 
-        #---------------------button----------------------
-        b1_1=Button(self.root,text="TO TRAIN DATA CLICK HERE",command=self.train_classifier,cursor="hand2",font=("Arial",18,"bold"),bg="#afd9e4",fg="white")
+        #--------------------------------------------------------------button---------------------------------------------------------------------
+        b1_1=Button(self.root,text="TO TRAIN DATA CLICK HERE",command=self.train_classifier,cursor="hand2",font=("Arial",18,"bold"),bg="#026573",fg="white")
         b1_1.place(x=0,y=370,width=1530,height=40)
 
-    
-        img_bottom=Image.open(r"images\Group2.jpg")
-        img_bottom=img_bottom.resize((1500,300),Image.ANTIALIAS)
+        #-----------------------------------------------------------bottom image------------------------------------------------------------------
+        img_bottom=Image.open(r"images\imagetop.jpg")
+        img_bottom=img_bottom.resize((1530,380),Image.ANTIALIAS)
         self.photoimg_bottom=ImageTk.PhotoImage(img_bottom)
 
         f_lbl=Label(self.root,image=self.photoimg_bottom)
         f_lbl.place(x=0,y=410,width=1530,height=380)
+#-------------------------------------------------------------------Train data-------------------------------------------------------------------
 
     def train_classifier(self):
         data_dir=("data")
@@ -53,10 +56,11 @@ class Train:
             faces.append(imageNp)
             ids.append(id)
             cv2.imshow("Training",imageNp)
-            cv2.waitkey(1)==13
+            cv2.waitKey(1)==13
+            #cv2.destroyAllWindows()
         ids=np.array(ids)
 
-        #--------------------Train the classifier and save---------------------
+        #--------------------------------------------------------------Train the classifier and save---------------------------------------------
         clf=cv2.face.LBPHFaceRecognizer_create()
         clf.train(faces,ids)
         clf.write("classifier.xml")
