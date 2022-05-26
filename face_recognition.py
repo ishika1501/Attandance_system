@@ -79,8 +79,10 @@ class Face_Recognition:
 
                 my_cursor.execute("select Name from student where Student_id="+str(id))
                 n=my_cursor.fetchone()
+                print(n)
+                print(type(n))
                 n="+".join(n)
-
+                 
                 my_cursor.execute("select Roll from student where Student_id="+str(id))
                 r=my_cursor.fetchone()
                 r="+".join(r)

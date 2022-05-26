@@ -195,7 +195,7 @@ class Attendance:
     def fetchData(self,rows):
         self.AttendanceReportTable.delete(*self.AttendanceReportTable.get_children())
         for i in rows:
-            self.AttendanceReportTable.insert("",END,Values=i)
+            self.AttendanceReportTable.insert("",END,values=i)
     #------------------------------------------------------------------import csv----------------------------------------------------------------
     def importCsv(self):
         global mydata
@@ -205,6 +205,7 @@ class Attendance:
             csvread=csv.reader(myfile,delimiter=",")
             for i in csvread:
                 mydata.append(i)
+            print(mydata)    
             self.fetchData(mydata)  
     #--------------------------------------------------------------------export csv--------------------------------------------------------------
     def exportCsv(self):

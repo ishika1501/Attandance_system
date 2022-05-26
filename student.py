@@ -191,25 +191,25 @@ class Student:
         btn_frame=Frame(class_student_frame,bd=2,relief=RIDGE,bg="white")
         btn_frame.place(x=15,y=300,width=684,height=38)
 
-        save_btn=Button(btn_frame,text="SAVE",command=self.add_data,width=16,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
+        save_btn=Button(btn_frame,text="SAVE",command=self.add_data,width=16,font=("Arial",13,"bold"),bg="#026573",fg="white")
         save_btn.grid(row=0,column=0)
 
-        update_btn=Button(btn_frame,text="UPDATE",command=self.update_data,width=16,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
+        update_btn=Button(btn_frame,text="UPDATE",command=self.update_data,width=16,font=("Arial",13,"bold"),bg="#026573",fg="white")
         update_btn.grid(row=0,column=1)
 
-        delete_btn=Button(btn_frame,text="DELETE",command=self.delete_data,width=16,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
+        delete_btn=Button(btn_frame,text="DELETE",command=self.delete_data,width=16,font=("Arial",13,"bold"),bg="#026573",fg="white")
         delete_btn.grid(row=0,column=2)
 
-        reset_btn=Button(btn_frame,text="RESET",command=self.reset_data,width=16,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
+        reset_btn=Button(btn_frame,text="RESET",command=self.reset_data,width=16,font=("Arial",13,"bold"),bg="#026573",fg="white")
         reset_btn.grid(row=0,column=3)
 
         btn1_frame=Frame(class_student_frame,bd=2,relief=RIDGE,bg="white")
         btn1_frame.place(x=15,y=338,width=684,height=38)
 
-        take_photo_btn=Button(btn1_frame,text="TAKE PHOTO",command=self.generate_dataset,width=67,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
+        take_photo_btn=Button(btn1_frame,text="TAKE PHOTO",command=self.generate_dataset,width=67,font=("Arial",13,"bold"),bg="#026573",fg="white")
         take_photo_btn.grid(row=0,column=0)
 
-        #resetphoto_btn=Button(btn_frame,text="RESET PHOTO",width=17,font=("Arial",13,"bold"),bg="#afd9e4",fg="white")
+        #resetphoto_btn=Button(btn_frame,text="RESET PHOTO",width=17,font=("Arial",13,"bold"),bg="#026573",fg="white")
         #resetphoto_btn.grid(row=1,column=1)
 
         #---------------------------------------------------------Right side label frame---------------------------------------------------------
@@ -316,9 +316,9 @@ class Student:
                                                                                                             self.var_std_name.get(),
                                                                                                             self.var_div.get(),
                                                                                                             self.var_roll.get(),
+                                                                                                            self.var_gender.get(),
                                                                                                             self.var_dob.get(),
                                                                                                             self.var_email.get(),
-                                                                                                            self.var_gender.get(),
                                                                                                             self.var_phone.get(),
                                                                                                             self.var_address.get(),
                                                                                                             self.var_teacher.get(),
@@ -380,7 +380,7 @@ class Student:
                 if Update>0:
                     conn=mysql.connector.connect(host="localhost",username="root",password="ishikaraj@123",database="database1")
                     my_cursor=conn.cursor()
-                    my_cursor.execute("update student set Dep=%s,Course=%s,Year=%s,Semester=%s,Name=%s,Division=%s,Roll=%s,Dob=%s,Email=%s,gender=%s,Phone=%s,Address=%s,Teacher=%s,PhotoSample=%s where Student_id=%s",(  
+                    my_cursor.execute("update student set Dep=%s,Course=%s,Year=%s,Semester=%s,Name=%s,Division=%s,Roll=%s,gender=%s,Dob=%s,Email=%s,Phone=%s,Address=%s,Teacher=%s,PhotoSample=%s where Student_id=%s",(  
                                                                                                                                                                                 self.var_dep.get(),
                                                                                                                                                                                 self.var_course.get(),
                                                                                                                                                                                 self.var_year.get(),
@@ -464,7 +464,7 @@ class Student:
                 id=0
                 for x in myresult:
                     id+=1
-                my_cursor.execute("update student set Dep=%s,Course=%s,Year=%s,Semester=%s,Name=%s,Division=%s,Roll=%s,Dob=%s,Email=%s,Gender=%s,Phone=%s,Address=%s,Teacher=%s,PhotoSample=%s where Student_id=%s",(  
+                my_cursor.execute("update student set Dep=%s,Course=%s,Year=%s,Semester=%s,Name=%s,Division=%s,Roll=%s,Gender=%s,Dob=%s,Email=%s,Phone=%s,Address=%s,Teacher=%s,PhotoSample=%s where Student_id=%s",(  
                                                                                                                                                                                 self.var_dep.get(),
                                                                                                                                                                                 self.var_course.get(),
                                                                                                                                                                                 self.var_year.get(),

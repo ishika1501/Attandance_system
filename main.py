@@ -83,7 +83,7 @@ class Face_recognition_system:
               b1=Button(bg_img,image=self.photoimg99,cursor="hand2",command=self.open_img)
               b1.place(x=380,y=440,width=220,height=220)
 
-              b1_1=Button(bg_img,text="Photo Face",cursor="hand2",command=self.open_img,font=("Arial",15,"bold"),bg="white",fg="grey")
+              b1_1=Button(bg_img,text="Face Photo",cursor="hand2",command=self.open_img,font=("Arial",15,"bold"),bg="white",fg="grey")
               b1_1.place(x=380,y=630,width=220,height=40)
 
               #------------------------------------------------------About Developer button----------------------------------------------
