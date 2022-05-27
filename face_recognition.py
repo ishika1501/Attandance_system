@@ -44,7 +44,7 @@ class Face_Recognition:
     #----------------------------------------------------------- mark attendance---------------------------------------------------------------- 
     def mark_attendance(self,i,r,n,d):
         with open("ishika.csv","r+",newline="\n") as f:
-            myDataList=f.readline()
+            myDataList=f.readlines()
             name_list=[]
             for line in myDataList:
                 entry=line.split((","))
@@ -55,9 +55,6 @@ class Face_Recognition:
                 dtString=now.strftime("%H:%M:%S")
                 f.writelines(f"\n{i},{r},{n},{d},{dtString},{d1},Present")
                     
-                
-
-
 
     #-------------------------------------------------------------face recognition----------------------------------------------------------------
 
@@ -79,8 +76,8 @@ class Face_Recognition:
 
                 my_cursor.execute("select Name from student where Student_id="+str(id))
                 n=my_cursor.fetchone()
-                print(n)
-                print(type(n))
+                #print(n)
+                #print(type(n))
                 n="+".join(n)
                  
                 my_cursor.execute("select Roll from student where Student_id="+str(id))
