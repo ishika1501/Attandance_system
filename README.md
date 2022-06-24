@@ -23,7 +23,7 @@ It is successfully created in Python by using OpenCV With Tkinter GUI & Mysql Da
 
 This basically consist of 5 parts:
 
-- **1.STUDENT DETAILS:** Where one can enter new student details, upadtte , dellete and reset the data for the respective student.
+- **1.STUDENT DETAILS:** Where one can enter new student details, update , delete and reset the data for the respective student.
   It has the feature to take photo sample of the student in realtime corrresponding to their details which can be used to mark their attendance.
 - **2.TRAIN DATA:** After taking the photo sample it train the data so the system can recognize the face.
 - **3.FACE DETECTOR:** It shows the details of the corresponding student who's details and photo samples are been trained bythe system.
